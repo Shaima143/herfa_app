@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.herfa.android.herfa.LoginActivity"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/textSize15dp"
+        android:src="@drawable/camera"
+        app:civ_border_color="@color/darkBrown"
+        app:civ_border_width="3dp" />
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginLeft="@dimen/margin30dp"-->
+        <!--android:gravity="center_horizontal">-->
+
+
+    <!--</RelativeLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/margin5dp"
+            android:padding="@dimen/padding20dp">
+
+            <EditText
+                android:id="@+id/editTextUsernameSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/edittextshape"
+                android:hint="@string/name"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:paddingLeft="0dp" />
+
+            <EditText
+                android:id="@+id/editTextEmailSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/edittextshape"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="5dp"
+                android:paddingLeft="10dp" />
+
+
+            <EditText
+                android:id="@+id/editTextPasswordSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edittextshape"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:paddingLeft="10dp" />
+
+            <EditText
+                android:id="@+id/editTextReEnterPasswordSignUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/edittextshape"
+                android:hint="@string/re_enter_password"
+                android:inputType="textPassword"
+                android:padding="5dp"
+                android:paddingLeft="10dp"/>
+
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/seeking_knowledge"
+                android:textSize="@dimen/textSize17dp"
+                android:theme="@style/SCBSwitch"
+                android:textColor="@color/lightBrown"
+                android:fontFamily="serif"
+                android:textStyle="bold"/>
+
+            <Switch
+                android:id="@+id/switch2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/trader_buyer"
+                android:textSize="@dimen/textSize17dp"
+                android:theme="@style/SCBSwitch"
+                android:textColor="@color/lightBrown"
+                android:fontFamily="serif"
+                android:textStyle="bold"/>
+
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I provide delivery service"
+                android:layout_marginBottom="40dp"
+                android:textSize="@dimen/textSize17dp"
+                android:theme="@style/SCBSwitch"
+                android:textColor="@color/lightBrown"
+                android:fontFamily="serif"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
+
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="1"
+    android:gravity="bottom|center"
+        android:layout_gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/buttonCreateAccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/create_account"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="@color/brandingColor"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
+            android:textSize="@dimen/textSize20dp"
+            android:background="@drawable/loginbuttonshape"
+            android:layout_marginLeft="@dimen/margin30dp"
+            android:layout_marginRight="@dimen/margin30dp" />
+
+        <Button
+            android:id="@+id/buttonAlreadyRegistered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/already_registered"
+            android:textColor="@color/brandingColor"
+            android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
+            android:textSize="@dimen/textSize17dp"
+            android:layout_marginLeft="@dimen/margin30dp"
+            android:layout_marginRight="@dimen/margin30dp"
+            style="?android:attr/borderlessButtonStyle"/>
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--xmlns:tools="http://schemas.android.com/tools"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--tools:context="com.herfa.android.herfa.LoginActivity"-->
+<!--android:orientation="vertical"-->
+<!--android:padding="20dp">-->
+
+<!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:gravity="center">-->
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--android:id="@+id/profile_image"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="150dp"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:src="@drawable/camera"-->
+        <!--app:civ_border_color="@color/darkBrown"-->
+        <!--app:civ_border_width="3dp"-->
+        <!--android:layout_marginBottom="@dimen/textSize17dp"/>-->
+
+
+    <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/camIcon"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="100dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_alignLeft="@+id/profile_image"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_alignParentTop="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_alignStart="@+id/profile_image"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginLeft="79dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginStart="79dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginTop="53dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:src="@drawable/camera" />&ndash;&gt;-->
+
+<!--</RelativeLayout>-->
+
+<!--<EditText-->
+    <!--android:id="@+id/editTextNameSignUp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="15dp"-->
+    <!--android:hint="@string/name"-->
+    <!--android:inputType="textEmailAddress"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:background="@drawable/edittextshape"-->
+    <!--android:padding="5dp"/>-->
+
+<!--<EditText-->
+    <!--android:id="@+id/editTextEmailSignUp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="15dp"-->
+    <!--android:hint="@string/email"-->
+    <!--android:inputType="textEmailAddress"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:background="@drawable/edittextshape"-->
+    <!--android:padding="5dp"/>-->
+
+
+<!--<EditText-->
+    <!--android:id="@+id/editTextPasswordSignUp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="10dp"-->
+    <!--android:hint="@string/password"-->
+    <!--android:inputType="textPassword"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:background="@drawable/edittextshape"-->
+    <!--android:padding="5dp"/>-->
+
+<!--<EditText-->
+    <!--android:id="@+id/editTextReEnterPasswordSignUp"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="25dp"-->
+    <!--android:hint="@string/re_enter_password"-->
+    <!--android:inputType="textPassword"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:background="@drawable/edittextshape"-->
+    <!--android:padding="5dp"/>-->
+
+<!--&lt;!&ndash;<android.support.v7.widget.SwitchCompat&ndash;&gt;-->
+<!--&lt;!&ndash;style="@style/SwitchCompatStyle"&ndash;&gt;-->
+<!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+<!--&lt;!&ndash;android:layout_height="wrap_content" />&ndash;&gt;-->
+
+<!--<Switch-->
+    <!--android:id="@+id/switch1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/seeking_knowledge"-->
+    <!--android:textSize="@dimen/textSize17dp"-->
+    <!--android:theme="@style/SCBSwitch"/>-->
+
+<!--<Switch-->
+    <!--android:id="@+id/switch2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/trader_buyer"-->
+    <!--android:textSize="@dimen/textSize17dp"-->
+    <!--android:theme="@style/SCBSwitch"/>-->
+
+<!--<Switch-->
+    <!--android:id="@+id/switch3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="I provide delivery service"-->
+    <!--android:layout_marginBottom="40dp"-->
+    <!--android:textSize="@dimen/textSize17dp"-->
+    <!--android:theme="@style/SCBSwitch"/>-->
+
+
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:layout_weight="1"-->
+    <!--android:gravity="bottom|center"-->
+    <!--android:layout_gravity="center_horizontal">-->
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonCreateAccount"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/create_account"-->
+        <!--style="?android:attr/borderlessButtonStyle"-->
+        <!--android:textColor="@color/brandingColor"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:textSize="@dimen/textSize20dp"-->
+        <!--android:background="@drawable/loginbuttonshape"-->
+        <!--android:layout_marginLeft="@dimen/margin30dp"-->
+        <!--android:layout_marginRight="@dimen/margin30dp" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonAlreadyRegistered"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/already_registered"-->
+        <!--android:textColor="@color/brandingColor"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:textSize="@dimen/textSize15dp"-->
+        <!--android:layout_marginLeft="@dimen/margin30dp"-->
+        <!--android:layout_marginRight="@dimen/margin30dp"-->
+        <!--style="?android:attr/borderlessButtonStyle"/>-->
+<!--</LinearLayout>-->
+
+<!--</LinearLayout>-->
+
+
+
+
+

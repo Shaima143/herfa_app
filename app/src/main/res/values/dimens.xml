@@ -1,0 +1,34 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="textSize10dp">10dp</dimen>
+    <dimen name="textSize20dp">20dp</dimen>
+    <dimen name="textSize15dp">15dp</dimen>
+    <dimen name="textSize17dp">17dp</dimen>
+    <dimen name="textSize19dp">19dp</dimen>
+    <dimen name="margin10dp">10dp</dimen>
+    <dimen name="margin15dp">15dp</dimen>
+    <dimen name="margin20dp">20dp</dimen>
+    <dimen name="margin25dp">25dp</dimen>
+    <dimen name="margin30dp">30dp</dimen>
+    <dimen name="margin35dp">35dp</dimen>
+    <dimen name="margin40dp">40dp</dimen>
+    <dimen name="margin45dp">45dp</dimen>
+    <dimen name="margin50dp">50dp</dimen>
+
+    <dimen name="bottomradius">400dp</dimen>
+    <dimen name="topradius">400dp</dimen>
+    <dimen name="padding10dp">10dp</dimen>
+    <dimen name="padding20dp">20dp</dimen>
+    <dimen name="margin5dp">5dp</dimen>
+    <dimen name="margin60dp">60dp</dimen>
+    <dimen name="margin70dp">70dp</dimen>
+    <dimen name="margin65dp">65dp</dimen>
+    <dimen name="margin90dp">90dp</dimen>
+    <dimen name="margin100dp">100dp</dimen>
+    <dimen name="margin110dp">110dp</dimen>
+</resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.herfa.android.herfa.ProfileScreen"
+    android:background="@drawable/background">
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation"
+        android:backgroundTint="@color/navBarBrownTrans"
+        android:paddingTop="@dimen/margin15dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin20dp">
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/margin35dp"
+            android:src="@drawable/camera"
+            app:civ_border_color="@color/darkBrown"
+            app:civ_border_width="3dp"
+            android:layout_marginTop="@dimen/textSize15dp"/>
+
+
+        <EditText
+            android:id="@+id/editTextNameProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/edittextshape"
+            android:hint="@string/name"
+            android:inputType="textEmailAddress"
+            android:padding="5dp"
+            android:paddingLeft="0dp" />
+
+        <TextView
+            android:id="@+id/tvProfileStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/textSize20dp"
+            android:textColor="@color/darkBrown"
+            android:layout_marginBottom="@dimen/margin20dp"/>
+
+
+        <ProgressBar
+            android:id="@+id/progressBarProfile"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin45dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/tvProfileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/textSize20dp"
+            android:textColor="@color/lightBrown"
+            android:layout_marginBottom="@dimen/margin15dp"/>
+
+        <TextView
+            android:id="@+id/tvProfilechangePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Change Password"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/textSize20dp"
+            android:textColor="@color/lightBrown"
+            />
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

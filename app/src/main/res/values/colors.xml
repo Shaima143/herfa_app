@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="backgroundColor">#edebe8</color>
+    <color name="brandingColor">#b74f28</color>
+    <color name="darkBrown">#8e3210</color>
+    <color name="lightBrown">#cc6633</color>
+    <color name="darkBrownTrans">#3d802808</color>
+    <color name="grey">#afb1b1</color>
+    <color name="shadow">#bfc4c4</color>
+    <color name="frame_background">#a97336</color>
+    <color name="switch_color">#bfbebe</color>
+    <color name="black">#201f1f</color>
+    <color name="navBarBrownTrans">#91999489</color>
+
+</resources>

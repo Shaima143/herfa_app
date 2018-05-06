@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.herfa.android.herfa.TermsAndConditions"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    android:padding="15dp"
+    android:gravity="center_horizontal"
+    android:alpha="0.8">
+
+    <WebView
+        android:id="@+id/terms"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin30dp"
+        android:layout_weight="0.3"/>
+
+    <CheckBox
+        android:id="@+id/CheckBoxtTerms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/i_accept_the_terms_and_conditions"
+        android:textSize="@dimen/textSize15dp"
+        android:textColor="@color/darkBrown"
+        android:fontFamily="serif"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.9"
+        android:gravity="bottom|center">
+
+    <Button
+        android:id="@+id/buttonAccept"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/accept"
+        android:textStyle="normal"
+        android:textSize="@dimen/textSize20dp"
+        android:background="@drawable/loginbuttonshape"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:textColor="@color/darkBrown"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

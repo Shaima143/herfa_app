@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "452806815939",
+    "firebase_url": "https://herfa-app.firebaseio.com",
+    "project_id": "herfa-app",
+    "storage_bucket": "herfa-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452806815939:android:6500dc1252a8082f",
+        "android_client_info": {
+          "package_name": "com.herfa.android.herfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452806815939-lkdqnchdl2qnd0t9gjqued1fi0qctuhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1bciknliM6hEXgaY2aYF0VqkSNHmGIuI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

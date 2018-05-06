@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "452806815939",
+    "firebase_url": "https://herfa-app.firebaseio.com",
+    "project_id": "herfa-app",
+    "storage_bucket": "herfa-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452806815939:android:6500dc1252a8082f",
+        "android_client_info": {
+          "package_name": "com.herfa.android.herfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452806815939-q2cmcd32j2uumt77d95ccm34l998i6vi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.herfa.android.herfa",
+            "certificate_hash": "410251edd306d6f11bf9493e818c22a3108554f2"
+          }
+        },
+        {
+          "client_id": "452806815939-4ba0gp24dhnkloavlgmrsdqua7lau7h6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.herfa.android.herfa",
+            "certificate_hash": "af8de2ef8f448dbf973a81f1c1ade24be3f5f56e"
+          }
+        },
+        {
+          "client_id": "452806815939-6hlcg6pvqvhe84rjlj1usjlh1pt0ju84.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.herfa.android.herfa",
+            "certificate_hash": "09b9182d4cd3a3b07e5e5f4f09f5f908724acd41"
+          }
+        },
+        {
+          "client_id": "452806815939-23j9rufnnamofqgvdi2e2bbpmfpjrtd6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.herfa.android.herfa",
+            "certificate_hash": "006b0f9fcfaffc4585210351083722118061727f"
+          }
+        },
+        {
+          "client_id": "452806815939-o445h9cpv0vdl903vc26ebh1gkgqdj62.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.herfa.android.herfa",
+            "certificate_hash": "1706476b5310df7d5cf11aa868cde6d15df12436"
+          }
+        },
+        {
+          "client_id": "452806815939-lkdqnchdl2qnd0t9gjqued1fi0qctuhn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1bciknliM6hEXgaY2aYF0VqkSNHmGIuI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452806815939-atpra552qe2ge68sseb3tjogj1p2u7jg.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alhreef.herfa"
+              }
+            },
+            {
+              "client_id": "452806815939-lkdqnchdl2qnd0t9gjqued1fi0qctuhn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
