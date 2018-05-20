@@ -42,8 +42,7 @@
             android:name=".TermsAndConditions"
             android:label="@string/terms" />
         <activity
-            android:name=".LoginActivity"
-            android:label="@string/login" />
+            android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".HomeActivity" />
         <activity

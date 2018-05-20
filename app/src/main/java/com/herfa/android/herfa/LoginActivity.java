@@ -58,8 +58,6 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,Comp
     private static final String KEY_PASS = "password";
 
 
-
-
 //    public static String  PREFS_NAME="mypre";
 //    public static String PREF_EMAIL="email";
 //    public static String PREF_PASSWORD="password";
@@ -69,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,Comp
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //setTitle(getString(R.string.login));
+        setTitle(getString(R.string.login));
 
 //        Blurry.with(LoginActivity.this).radius(25)
 //                .sampling(1)

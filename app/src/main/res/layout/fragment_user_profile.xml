@@ -30,9 +30,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:layout_margin="@dimen/margin5dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -44,25 +44,15 @@
                 android:id="@+id/editIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/edit"
-                android:tint="@color/lightBrown"
                 android:layout_marginRight="@dimen/margin5dp"
+                android:background="@drawable/ripple_effect2"
+                android:paddingBottom="@dimen/padding10dp"
                 android:paddingLeft="@dimen/padding15dp"
                 android:paddingTop="@dimen/padding10dp"
-                android:paddingBottom="@dimen/padding10dp"
-                android:background="@drawable/ripple_effect2"/>
+                android:src="@drawable/edit"
+                android:tint="@color/lightBrown" />
 
             <!--<Switch-->
-                <!--android:id="@+id/switchEditProfile"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="right"-->
-                <!--android:textColor="@color/darkBrown"-->
-                <!--android:textSize="@dimen/textSize20dp" />-->
-
-        </LinearLayout>
-
-        <!--<Switch-->
             <!--android:id="@+id/switchEditProfile"-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
@@ -70,19 +60,46 @@
             <!--android:textColor="@color/darkBrown"-->
             <!--android:textSize="@dimen/textSize20dp" />-->
 
+        </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/user_profile_image"
+        <!--<Switch-->
+        <!--android:id="@+id/switchEditProfile"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:textColor="@color/darkBrown"-->
+        <!--android:textSize="@dimen/textSize20dp" />-->
+
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/margin15dp"
-            android:src="@drawable/camera"
-            app:civ_border_color="@color/darkBrown"
-            app:civ_border_width="3dp"
             android:layout_gravity="center"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginBottom="@dimen/padding10dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_profile_image"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center"
+                android:src="@drawable/nobody"
+                app:civ_border_color="@color/darkBrown"
+                app:civ_border_width="3dp" />
+
+            <ImageView
+                android:id="@+id/iconAdd"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignBottom="@+id/user_profile_image"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="11dp"
+                android:layout_marginEnd="138dp"
+                android:src="@drawable/icon_add"
+                android:tint="@color/lightBrown" />
+
+        </RelativeLayout>
 
 
         <EditText
@@ -90,17 +107,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/margin10dp"
+            android:layout_marginRight="@dimen/margin10dp"
+            android:gravity="center"
             android:hint="@string/name"
             android:inputType="textPersonName"
             android:padding="5dp"
             android:paddingLeft="0dp"
-            android:gravity="center"
-            android:textStyle="bold"
             android:textColor="@color/darkBrown"
-            android:layout_marginLeft="@dimen/margin10dp"
-            android:layout_marginRight="@dimen/margin10dp"
-            />
-            <!--android:background="@drawable/edittextshape"-->
+            android:textStyle="bold" />
+        <!--android:background="@drawable/edittextshape"-->
 
 
         <ProgressBar
@@ -109,31 +125,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin5dp"
-            android:layout_marginRight="@dimen/margin10dp"
             android:layout_marginLeft="@dimen/margin10dp"
-            android:progress="25"/>
+            android:layout_marginRight="@dimen/margin10dp"
+            android:progress="25" />
 
         <TextView
             android:id="@+id/tvProfileStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin10dp"
+            android:layout_marginRight="@dimen/margin10dp"
             android:gravity="right"
             android:text="User Status"
             android:textColor="@color/darkBrown"
-            android:textSize="@dimen/textSize15dp"
-            android:layout_marginRight="@dimen/margin10dp"/>
+            android:textSize="@dimen/textSize15dp" />
 
         <!--<TextView-->
-            <!--android:id="@+id/tvUserProfileEmail"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:textSize="@dimen/textSize15dp"-->
-            <!--android:text="email"-->
-            <!--android:textColor="@color/lightBrown"-->
-            <!--android:fontFamily="serif"-->
-            <!--android:layout_marginBottom="@dimen/margin15dp"/>-->
+        <!--android:id="@+id/tvUserProfileEmail"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:textSize="@dimen/textSize15dp"-->
+        <!--android:text="email"-->
+        <!--android:textColor="@color/lightBrown"-->
+        <!--android:fontFamily="serif"-->
+        <!--android:layout_marginBottom="@dimen/margin15dp"/>-->
 
 
         <EditText
@@ -141,52 +157,61 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="@dimen/margin10dp"
+            android:layout_marginRight="@dimen/margin10dp"
+            android:gravity="center"
             android:hint="@string/change_email"
             android:inputType="textEmailAddress"
             android:padding="5dp"
             android:paddingLeft="0dp"
-            android:gravity="center"
-            android:textStyle="bold"
             android:textColor="@color/darkBrown"
-            android:layout_marginLeft="@dimen/margin10dp"
-            android:layout_marginRight="@dimen/margin10dp" />
+            android:textStyle="bold" />
 
 
         <!--<TextView-->
-            <!--android:id="@+id/tvProfileChangeEmail"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/change_email"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:textSize="@dimen/textSize20dp"-->
-            <!--android:textColor="@color/lightBrown"-->
-            <!--android:layout_marginBottom="@dimen/margin15dp"/>-->
+        <!--android:id="@+id/tvProfileChangeEmail"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/change_email"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:textSize="@dimen/textSize20dp"-->
+        <!--android:textColor="@color/lightBrown"-->
+        <!--android:layout_marginBottom="@dimen/margin15dp"/>-->
 
         <Button
             android:id="@+id/BtnProfilechangePass"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change Password"
-            android:gravity="center_horizontal"
-            android:textSize="@dimen/textSize15dp"
-            android:textColor="@color/lightBrown"
-            style="?android:attr/borderlessButtonStyle"
-            android:textAllCaps="false"
             android:layout_marginTop="@dimen/margin30dp"
-            />
+            android:gravity="center_horizontal"
+            android:text="Change Password"
+            android:textAllCaps="false"
+            android:textColor="@color/lightBrown"
+            android:textSize="@dimen/textSize15dp" />
 
+        <Button
+            android:id="@+id/BtnProfilechangeEmail"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/change_email"
+            android:textAllCaps="false"
+            android:textColor="@color/lightBrown"
+            android:textSize="@dimen/textSize15dp" />
 
 
         <!--<TextView-->
-            <!--android:id="@+id/logOut"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@string/log_out"-->
-            <!--android:gravity="center_horizontal"-->
-            <!--android:textSize="@dimen/textSize20dp"-->
-            <!--android:textColor="@color/lightBrown"-->
-            <!--android:layout_marginTop="@dimen/margin80dp"-->
-            <!--/>-->
+        <!--android:id="@+id/logOut"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/log_out"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:textSize="@dimen/textSize20dp"-->
+        <!--android:textColor="@color/lightBrown"-->
+        <!--android:layout_marginTop="@dimen/margin80dp"-->
+        <!--/>-->
 
     </LinearLayout>
 

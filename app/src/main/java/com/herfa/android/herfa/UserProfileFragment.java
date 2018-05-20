@@ -10,15 +10,19 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
+
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.nfc.Tag;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
+
+import android.renderscript.Allocation;
+import android.renderscript.Element;
+import android.renderscript.RenderScript;
+import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
@@ -98,15 +102,14 @@ public class UserProfileFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private CircleImageView profileImage;
+    private CircleImageView UserprofileImage;
     private EditText usernameEditText, emailEditText;
     private Switch switchEdit;
     private TextView userProfileEmail, logout, status;
-    private Button updateProfile, deleteProfile, changePass;
+    private Button updateProfile, deleteProfile, changePass, changeEmail;
     private ProgressBar progressBar;
-
-    ImageView settingsBtn, back, edit;
-    TextView title;
+    private ImageView settingsBtn, back, edit, iconChangeProfileImage;;
+    private TextView title;
 
     Fragment fragment;
 
@@ -184,7 +187,7 @@ public class UserProfileFragment extends Fragment {
 
 
 
-        profileImage = view.findViewById(R.id.user_profile_image);
+        UserprofileImage = view.findViewById(R.id.user_profile_image);
         usernameEditText = view.findViewById(R.id.editTextNameProfile);
         emailEditText = view.findViewById(R.id.editTextUserEmail);
         //switchEdit = view.findViewById(R.id.switchEditProfile);
@@ -192,16 +195,20 @@ public class UserProfileFragment extends Fragment {
         updateProfile=view.findViewById(R.id.buttonUpdateProfile);
         deleteProfile = view.findViewById(R.id.buttonDeleteProfile);
         changePass = view.findViewById(R.id.BtnProfilechangePass);
+        changeEmail = view.findViewById(R.id.BtnProfilechangeEmail);
         progressBar = view.findViewById(R.id.progressBarProfile);
         status = view.findViewById(R.id.tvProfileStatus);
         edit = view.findViewById(R.id.editIcon);
+        iconChangeProfileImage = view.findViewById(R.id.iconAdd);
 
+        UserprofileImage.setClickable(false);
 
 
         usernameEditText.setEnabled(false);
         emailEditText.setEnabled(false);
         deleteProfile.setVisibility(view.INVISIBLE);
         updateProfile.setVisibility(View.INVISIBLE);
+        iconChangeProfileImage.setVisibility(view.INVISIBLE);
 
 //        switchEdit.setOnClickListener(new View.OnClickListener() {
 //            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
@@ -224,6 +231,13 @@ public class UserProfileFragment extends Fragment {
 //            }
 //        });
 
+       // UserprofileImage.setImageAlpha(0);
+        UserprofileImage.setImageAlpha(204);
+
+
+//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),(R.drawable.camera));
+//        Bitmap blurredBitmap = blur(bitmap);
+//        UserprofileImage.setImageBitmap(blurredBitmap);
 
 
         if(count==0){
@@ -243,7 +257,12 @@ public class UserProfileFragment extends Fragment {
                     updateProfile.setVisibility(View.INVISIBLE);
                     deleteProfile.setVisibility(View.INVISIBLE);
                     usernameEditText.setBackground(null);
+                    iconChangeProfileImage.setVisibility(View.INVISIBLE);
+
+                    UserprofileImage.setClickable(false);
+                   // UserprofileImage.setImageAlpha((int) 1.0);
                     count++;
+
                 }
 
                // count=count+1;
@@ -255,7 +274,11 @@ public class UserProfileFragment extends Fragment {
                     emailEditText.setEnabled(true);
                     updateProfile.setVisibility(View.VISIBLE);
                     deleteProfile.setVisibility(View.VISIBLE);
+                    iconChangeProfileImage.setVisibility(View.VISIBLE);
                     usernameEditText.setBackground(Drawable.createFromPath(String.valueOf(R.drawable.edittextshape)));
+
+                    UserprofileImage.setClickable(true);
+                   // UserprofileImage.setImageAlpha((int) 0.5);
                     count=0;
                 }
 
@@ -375,7 +398,7 @@ public class UserProfileFragment extends Fragment {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 SignUpInfo info= dataSnapshot.getValue(SignUpInfo.class);
                                 //Toast.makeText(getContext(),info.getUserImageURL(),Toast.LENGTH_LONG).show();
-                                Picasso.with(getContext()).load(info.getUserImageURL()).resize(400,400).into(profileImage);
+                                Picasso.with(getContext()).load(info.getUserImageURL()).resize(400,400).into(UserprofileImage);
                                 usernameEditText.setText(info.getUsername());
                                 //emailEditText.setText(info.getEmail());
                                 //userProfileEmail.setText(info.getEmail());
@@ -401,11 +424,35 @@ public class UserProfileFragment extends Fragment {
 
 
 
-        profileImage.setOnClickListener(new View.OnClickListener() {
+//        iconChangeProfileImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent();
+////                intent.setType("image/*");
+////                intent.setAction(Intent.ACTION_GET_CONTENT);
+////                startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_CAPTURE_REQUEST_CODE);
+//
+//            }
+        //});
+
+        UserprofileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(getContext(),"clicked",Toast.LENGTH_LONG).show();
 
+            }
+        });
 
+        changeEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.startAnimation(buttonClick);
+                if(emailEditText.getText().toString().length()==0){
+                    emailEditText.setError("Please enter a new username");
+                    return;
+                }
+
+                showDialog();
             }
         });
 
@@ -413,68 +460,19 @@ public class UserProfileFragment extends Fragment {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                v.startAnimation(buttonClick);
-                if(usernameEditText.getText().toString().length()==0){
-                    usernameEditText.setError("Please enter a new username");
-                    return;
-                }
-
-                showDialog();
+//                v.startAnimation(buttonClick);
+//                if(usernameEditText.getText().toString().length()==0){
+//                    usernameEditText.setError("Please enter a new username");
+//                    return;
+//                }
+//
+//                showDialog();
 
             }
         });
 
 
 
-//        changePass.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
-//                String uEmail = firebaseUser.getEmail();
-//
-//                firebaseAuth.sendPasswordResetEmail(uEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if(task.isSuccessful()){
-//                            Log.d(TAG, "Password reset Email sent.");
-//                            Toast.makeText(getContext(), "Password reset email sent", Toast.LENGTH_SHORT).show();
-//                        }
-//
-//                    }
-//                });
-//
-//            }
-//        });
-
-
-
-
-//        changePass.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String UserEmail = emailEditText.getText().toString();
-//
-//                if(emailEditText.getText().toString().length()==0){
-//                    //emailEditText.setError(getString(R.string.pleaseEnterEmail));
-//                    Toast.makeText(getContext(), "Please provide an email", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    firebaseAuth.sendPasswordResetEmail(UserEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task) {
-//                            if(task.isSuccessful()){
-//                                Toast.makeText(getContext(), "Check your email to reset password",Toast.LENGTH_LONG).show();
-//                            }
-//                            else {
-//                                Toast.makeText(getContext(), "Failed to send reset password email",Toast.LENGTH_LONG).show();
-//                            }
-//
-//                        }
-//                    });
-//                }
-//            }
-//        });
         firebaseAuth = FirebaseAuth.getInstance();
 
         changePass.setOnClickListener(new View.OnClickListener() {
@@ -499,7 +497,7 @@ public class UserProfileFragment extends Fragment {
         });
 
 
-deleteProfile.setOnClickListener(new View.OnClickListener() {
+  deleteProfile.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -656,7 +654,7 @@ deleteProfile.setOnClickListener(new View.OnClickListener() {
             Bundle bundle = data.getExtras();
             bmp = (Bitmap) bundle.get("data");
             profile_photo = Bitmap.createScaledBitmap(bmp,512,512,true);
-            profileImage.setImageBitmap(profile_photo);
+            UserprofileImage.setImageBitmap(profile_photo);
         }
 
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK){
@@ -887,6 +885,26 @@ deleteProfile.setOnClickListener(new View.OnClickListener() {
 
 
 
+
+//    //Set the radius of the Blur. Supported range 0 < radius <= 25
+//    private static final float BLUR_RADIUS = 25f;
+//
+//    public Bitmap blur(Bitmap image) {
+//        if (null == image) return null;
+//
+//        Bitmap outputBitmap = Bitmap.createBitmap(image);
+//        final RenderScript renderScript = RenderScript.create(getContext());
+//        Allocation tmpIn = Allocation.createFromBitmap(renderScript, image);
+//        Allocation tmpOut = Allocation.createFromBitmap(renderScript, outputBitmap);
+//
+//        //Intrinsic Gausian blur filter
+//        ScriptIntrinsicBlur theIntrinsic = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript));
+//        theIntrinsic.setRadius(BLUR_RADIUS);
+//        theIntrinsic.setInput(tmpIn);
+//        theIntrinsic.forEach(tmpOut);
+//        tmpOut.copyTo(outputBitmap);
+//        return outputBitmap;
+//    }
 
 
 
