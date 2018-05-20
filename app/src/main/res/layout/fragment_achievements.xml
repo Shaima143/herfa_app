@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.herfa.android.herfa.LevelsScreen"
-    android:background="@drawable/background">
+    android:orientation="vertical"
+    android:background="@drawable/backg">
+
+    <!--<include android:id="@+id/background"-->
+        <!--layout="@layout/background"/>-->
+
+    <include
+        layout="@layout/back_button_achievment"
+        android:layout_height="63dp"
+        android:layout_width="match_parent"></include>
 
     <!--<android.support.design.widget.BottomNavigationView-->
         <!--android:id="@+id/navigation"-->
@@ -23,4 +32,14 @@
         <!--android:paddingTop="@dimen/margin15dp"/>-->
 
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView_achievements"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin5dp"
+        android:layout_marginTop="@dimen/margin10dp"/>
+
+
+</LinearLayout>

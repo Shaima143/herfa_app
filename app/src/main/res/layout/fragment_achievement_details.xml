@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backg"
+    tools:context="com.herfa.android.herfa.AchievementDetailsFragment">
+
+    <include
+        layout="@layout/back_button_achievment"
+        android:layout_height="63dp"
+        android:layout_width="match_parent"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/margin10dp"
+        >
+        <ImageView
+            android:id="@+id/achievement_details_image"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/camera"
+            android:scaleType="fitXY"
+            android:layout_marginTop="@dimen/margin30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/margin5dp"
+        android:padding="@dimen/padding20dp">
+
+        <TextView
+            android:id="@+id/text_achiev_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin15dp"
+            android:text="Congratulations!
+You have recieved this badge on completing the first task!"
+            android:singleLine="false"
+            android:lineSpacingExtra="10dp"
+            android:padding="5dp"
+            android:textSize="@dimen/textSize20dp"
+            android:paddingLeft="0dp"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

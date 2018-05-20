@@ -7,10 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -21,7 +26,7 @@ import android.view.ViewGroup;
  * Use the {@link AchievementsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AchievementsFragment extends Fragment {
+public class AchievementsFragment extends Fragment implements AchievementsAdapter.OnAdapterItemClick{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -30,6 +35,15 @@ public class AchievementsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    TextView title;
+
+    ArrayList<AchievementsDetails> achievementsDetailsArrayList;
+    AchievementsDetails achievementsDetails;
+    RecyclerView recyclerView;
+    View view;
+
+    public int []achievements;
 
     private OnFragmentInteractionListener mListener;
 
@@ -73,13 +87,46 @@ public class AchievementsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_achievements, container, false);
 
-        getActivity().setTitle("Achievements");
+        title = view.findViewById(R.id.title);
+        title.setText(getString(R.string.achievements));
+
+        //getActivity().setTitle(getString(R.string.achievements));
+
+
+              achievements = new int[]{R.drawable.wood_badge1, R.drawable.wood_badge2, R.drawable.wood_badge3,
+                R.drawable.wood_badge2, R.drawable.wood_badge3, R.drawable.wood_badge1,
+                R.drawable.wood_badge1, R.drawable.wood_badge1, R.drawable.wood_badge2,
+                R.drawable.wood_badge3, R.drawable.wood_badge2, R.drawable.wood_badge3,
+                R.drawable.wood_badge2, R.drawable.wood_badge1, R.drawable.wood_badge3,
+                R.drawable.wood_badge1, R.drawable.wood_badge3, R.drawable.wood_badge2};
+
+        recyclerView = view.findViewById(R.id.recyclerView_achievements);
+
+        //achievementsDetailsArrayList = new ArrayList<>();
+       // createAchievements();
+
+        GridLayoutManager layoutManager=new GridLayoutManager (getContext(),
+                3,GridLayoutManager.VERTICAL , false);
+
+        AchievementsAdapter achievementsAdapter = new AchievementsAdapter(getContext(), achievements);
+        achievementsAdapter.setOnAdapterItemClick(this);
+
+        recyclerView.setAdapter(achievementsAdapter);
+        recyclerView.setLayoutManager(layoutManager);
 
         //navigation = view.findViewById(R.id.navigation);
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
 
         return view;
+    }
+
+    private void createAchievements() {
+        for(int i=0; i<achievements.length;i++){
+            AchievementsDetails achievementsDetails = new AchievementsDetails();
+            achievementsDetails.setBadge(achievements[i]);
+            achievementsDetailsArrayList.add(achievementsDetails);
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -104,6 +151,22 @@ public class AchievementsFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Fragment fragment=null;
+        FragmentTransaction fragmentTransaction=getActivity().getSupportFragmentManager()
+                .beginTransaction();
+
+        fragment=AchievementDetailsFragment.newInstance(achievements[position]);
+        //fragment=BottomNavigationHomeFragment.newInstance(images[position]);
+//
+        if(fragment!=null){
+            fragmentTransaction.replace(R.id.frame_container,fragment);
+            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+            fragmentTransaction.commit();
+        }
     }
 
     /**

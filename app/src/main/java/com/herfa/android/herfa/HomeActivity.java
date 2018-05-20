@@ -49,64 +49,64 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main2, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.action_settings) {
-            //Add locale for language change
-            Locale current = getResources().getConfiguration().locale;
-
-            if(current.getLanguage().equalsIgnoreCase(Constants.AR)){
-                changeLangLocale(Constants.EN);
-            }
-            else{
-                changeLangLocale(Constants.AR);
-            }
-            Intent i = getIntent();
-            finish();
-            startActivity(i);
-        }
-
-        if(id == R.id.action_about_us){
-            Toast.makeText(HomeActivity.this, R.string.about_us, Toast.LENGTH_SHORT).show();
-        }
-
-        if(id == R.id.action_contact_us){
-            Toast.makeText(HomeActivity.this, R.string.contact_us, Toast.LENGTH_SHORT).show();
-        }
-
-        if(id == R.id.action_sign_out){
-            final String[] items = {String.valueOf(R.string.signout),String.valueOf(R.string.cancel)};
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-            builder.setTitle("Sign out from Herfa app?");
-            builder.setPositiveButton(R.string.sign_out, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    firebaseAuth.signOut();
-                    finish();
-                }
-            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-
-            builder.show();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.main2, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+//        if (id == R.id.action_settings) {
+//            //Add locale for language change
+//            Locale current = getResources().getConfiguration().locale;
+//
+//            if(current.getLanguage().equalsIgnoreCase(Constants.AR)){
+//                changeLangLocale(Constants.EN);
+//            }
+//            else{
+//                changeLangLocale(Constants.AR);
+//            }
+//            Intent i = getIntent();
+//            finish();
+//            startActivity(i);
+//        }
+//
+//        if(id == R.id.action_about_us){
+//            Toast.makeText(HomeActivity.this, R.string.about_us, Toast.LENGTH_SHORT).show();
+//        }
+//
+//        if(id == R.id.action_contact_us){
+//            Toast.makeText(HomeActivity.this, R.string.contact_us, Toast.LENGTH_SHORT).show();
+//        }
+//
+//        if(id == R.id.action_sign_out){
+//            final String[] items = {String.valueOf(R.string.signout),String.valueOf(R.string.cancel)};
+//
+//            AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+//            builder.setTitle("Sign out from Herfa app?");
+//            builder.setPositiveButton(R.string.sign_out, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    firebaseAuth.signOut();
+//                    finish();
+//                }
+//            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    dialog.dismiss();
+//                }
+//            });
+//
+//            builder.show();
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     public void changeLangLocale(String en) {
         Locale myLocale = new Locale(en);

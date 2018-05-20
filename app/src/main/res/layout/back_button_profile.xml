@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.herfa.android.herfa.BackButton"
+    android:orientation="vertical"
+    android:background="?attr/colorPrimary"
+    android:popupTheme="@style/AppTheme.PopupOverlay"
+    android:minHeight="?attr/actionBarSize"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp">
+
+        <ImageView
+            android:id="@+id/back_button_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back"
+            android:tint="@color/white"
+            android:paddingRight="@dimen/padding10dp"
+            android:onClick="backPressedUserProfile"
+            tools:ignore="OnClick" />
+
+        <TextView
+            android:id="@+id/titleProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:textStyle="normal|bold"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/white"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="right">
+
+            <ImageView
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/settingslist"
+                android:tint="@color/white"
+                android:paddingRight="@dimen/padding20dp"
+                />
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+        <!--<menu xmlns:android="http://schemas.android.com/apk/res/android" >-->
+        <!--<item android:id="@+id/action_search"-->
+            <!--android:icon="@drawable/ic_home_black_24dp"-->
+            <!--android:title="About us"-->
+            <!--android:showAsAction="never"/>-->
+
+        <!--<item android:id="@+id/action_compose"-->
+            <!--android:icon="@drawable/camera"-->
+            <!--android:title="contact us"-->
+            <!--android:showAsAction="ifRoom"/>-->
+        <!--</menu>-->
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

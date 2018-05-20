@@ -2,23 +2,24 @@ package com.herfa.android.herfa;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -49,11 +50,15 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
     private static final String ARG_PARAM2 = "param2";
     RecyclerView recyclerView;
 
+    TextView title, status;
+    ImageView backButton;
+    ProgressBar progress;
+
     private int [] levels={R.string.introduction,R.string.basic_tools,
             R.string.the_first_project,R.string.the_second_project,R.string.more_professional_tools};
 
-    private int[] lock_imags={R.drawable.ic_menu_camera,R.drawable.ic_menu_camera,R.drawable.ic_menu_camera
-            ,R.drawable.ic_menu_camera,R.drawable.ic_menu_camera};
+//    private int[] lock_imags={R.drawable.ic_menu_camera,R.drawable.ic_menu_camera,R.drawable.ic_menu_camera
+//            ,R.drawable.ic_menu_camera,R.drawable.ic_menu_camera};
 
     private ArrayList<LevelsDetails> carpenteryDetailsList;
 
@@ -105,17 +110,64 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_levels, container, false);
 
-        getActivity().setTitle("Levels");
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        title = view.findViewById(R.id.title);
+        backButton = view.findViewById(R.id.back_button);
+        title.setText(getString(R.string.learn));
+
+        progressBar_Ls=view.findViewById(R.id.progressBar_LevelsFragment);
+
+        status=view.findViewById(R.id.levelsStatus);
+        String pr = String.valueOf(progressBar_Ls.getProgress());
+        status.setText(pr+" %");
+
+        //toolbar.setNavigationIcon(R.drawable.icon_carpentry);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+
+        //getActivity().setTitle(getString(R.string.levels));
+
+
+        //toolbar.setTitle(getString(R.string.app_name));
+       // toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getContext(), "clicked", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                FragmentTransaction fragmentTransaction=getActivity().getSupportFragmentManager()
+////                        .beginTransaction();
+////                Fragment fragment=new CraftsFragment();
+////                fragmentTransaction.replace(R.id.main_container,fragment);
+////                fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+////                fragmentTransaction.commit();
+//            }
+//        });
+
+
+
 
         carpenteryDetailsList= new ArrayList<>();
 
         recyclerView= view.findViewById(R.id.recyclerView_carpentryLevels);
+
+        recyclerView.addItemDecoration(new
+                DividerItemDecoration(getActivity(),
+                DividerItemDecoration.VERTICAL));
+
         profileImage = view.findViewById(R.id.profile_image);
 
 
@@ -123,8 +175,10 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
 
         userName=view.findViewById(R.id.name_txt_levelsFragment);
 
+        progress=view.findViewById(R.id.progressImage);
+
         craftJunior=view.findViewById(R.id.craftJunior);
-        craftJunior.setText(mParam2);
+        craftJunior.setText(getString(mParam2)+" junior");
 
         //navigation = view.findViewById(R.id.navigation);
         //navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -158,6 +212,7 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
                                //Toast.makeText(getContext(),info.getUserImageURL(),Toast.LENGTH_LONG).show();
                                 Picasso.with(getContext()).load(info.getUserImageURL()).resize(430,430).into(profileImage);
                                 userName.setText(info.getUsername());
+                                progress.setVisibility(View.GONE);
                             }
 
                             @Override
@@ -186,7 +241,6 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
 
             //userName.setText(name);
             //profileImage.setImageURI(photoUrl);
-
             //Toast.makeText(getContext(), "logged in "+uid, Toast.LENGTH_LONG).show();
             //Toast.makeText(getContext(), "hiiiii "+email, Toast.LENGTH_LONG).show();
         }
@@ -206,7 +260,7 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
         for (int i = 0; i < levels.length; i++) {
             LevelsDetails carpenteryDetails = new LevelsDetails();
             carpenteryDetails.setLevel(levels[i]);
-            carpenteryDetails.setImage(lock_imags[i]);
+            //carpenteryDetails.setImage(lock_imags[i]);
             carpenteryDetailsList.add(carpenteryDetails);
 
         }

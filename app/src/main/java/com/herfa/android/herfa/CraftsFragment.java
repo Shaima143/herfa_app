@@ -4,16 +4,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,8 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,10 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -58,6 +53,8 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
 
     private SharedPreferences sharedPref;
     FirebaseAuth auth = FirebaseAuth.getInstance();
+
+    TextView title;
 
     //    FirebaseDatabase firebaseDatabase;
 //    DatabaseReference craftsRefrence;
@@ -86,6 +83,8 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+
+
 
 
     public CraftsFragment() {
@@ -127,12 +126,18 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
                              Bundle savedInstanceState) {
         final String ARG_SECTION_NUMBER ="section_number";
         View view= inflater.inflate(R.layout.fragment_crafts, container, false);
-        //RecyclerView.LayoutManager layoutManager=new (getContext(),2);
-        //recyclerView.setLayoutManager(layoutManager);
+
+        title = view.findViewById(R.id.titleCrafts);
+        title.setText(getString(R.string.handcrafts));
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         getActivity().setTitle(getString(R.string.handcrafts));
 
         recyclerView= view.findViewById(R.id.recyclerView_craftsFragment);
+
+
+
         craftsDetailsArrayList =new ArrayList<>();
         createCraft();
         GridLayoutManager layoutManager=new GridLayoutManager (getContext(),
@@ -142,7 +147,6 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
         adapter.setOnAdapterItemClick(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
-        //displayCraftData(craftsDetailsArrayList);
 
 
 
@@ -150,11 +154,7 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
 
         if(user != null){
             String uid = user.getUid();
-            //String name = user.getDisplayName();
             String email = user.getEmail();
-
-            //Toast.makeText(getContext(), "logged in "+uid, Toast.LENGTH_LONG).show();
-            //Toast.makeText(getContext(), "hello "+email, Toast.LENGTH_LONG).show();
         }
         else
         {
@@ -176,7 +176,6 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 SignUpInfo info= dataSnapshot.getValue(SignUpInfo.class);
                                 String uname = info.getUsername();
-                                Toast.makeText(getContext(), "Welcome back, "+uname, Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
@@ -196,8 +195,6 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
 
         return view;
     }
-
-
 
 
     public void createCraft(){
@@ -264,28 +261,34 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
                 .beginTransaction();
         switch (position){
             case 0:
-                fragment=LevelsFragment.newInstance(craftName[0]);
+                //fragment=LevelsFragment.newInstance(craftName[0]);
+                fragment=BottomNavigationHomeFragment.newInstance(craftName[0]);
                 break;
             case 1:
-                fragment=LevelsFragment.newInstance(craftName[1]);
+                Toast.makeText(getContext(), getString(craftName[1])+" "+getString(R.string.comingSoon) , Toast.LENGTH_SHORT).show();
+                //fragment=BottomNavigationHomeFragment.newInstance(craftName[1]);
                 break;
             case 2:
-                fragment=LevelsFragment.newInstance(craftName[2]);
+                Toast.makeText(getContext(), getString(craftName[2])+" "+getString(R.string.comingSoon), Toast.LENGTH_SHORT).show();
+                //fragment=BottomNavigationHomeFragment.newInstance(craftName[2]);
                 break;
             case 3:
-                fragment=LevelsFragment.newInstance(craftName[3]);
+                Toast.makeText(getContext(), getString(craftName[3])+" "+getString(R.string.comingSoon), Toast.LENGTH_SHORT).show();
+                //fragment=BottomNavigationHomeFragment.newInstance(craftName[3]);
                 break;
             case 4:
-                fragment=LevelsFragment.newInstance(craftName[4]);
+                Toast.makeText(getContext(), getString(craftName[4])+" "+getString(R.string.comingSoon), Toast.LENGTH_SHORT).show();
+                // fragment=BottomNavigationHomeFragment.newInstance(craftName[4]);
                 break;
             case 5:
-                fragment=LevelsFragment.newInstance(craftName[5]);
+                Toast.makeText(getContext(), getString(craftName[5])+" "+getString(R.string.comingSoon), Toast.LENGTH_SHORT).show();
+                // fragment=BottomNavigationHomeFragment.newInstance(craftName[5]);
                 break;
         }
 
         if(fragment!=null){
             fragmentTransaction.replace(R.id.main_container,fragment);
-            fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
+            //fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
             fragmentTransaction.commit();
         }
 
@@ -308,64 +311,64 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
     }
 
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.main2, menu);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-//        if (id == R.id.action_settings) {
-//            //Add locale for language change
-//            Locale current = getResources().getConfiguration().locale;
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.main2, menu);
+//    }
 //
-//            if(current.getLanguage().equalsIgnoreCase(Constants.AR)){
-//                changeLangLocale(Constants.EN);
-//            }
-//            else{
-//                changeLangLocale(Constants.AR);
-//            }
-////            Intent i = getIntent();
-////            finish();
-////            startActivity(i);
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//
+//        int id = item.getItemId();
+//
+////        if (id == R.id.action_settings) {
+////            //Add locale for language change
+////            Locale current = getResources().getConfiguration().locale;
+////
+////            if(current.getLanguage().equalsIgnoreCase(Constants.AR)){
+////                changeLangLocale(Constants.EN);
+////            }
+////            else{
+////                changeLangLocale(Constants.AR);
+////            }
+//////            Intent i = getIntent();
+//////            finish();
+//////            startActivity(i);
+////        }
+//
+//        if(id == R.id.action_about_us){
+//            Toast.makeText(getContext(), R.string.about_us, Toast.LENGTH_SHORT).show();
 //        }
-
-        if(id == R.id.action_about_us){
-            Toast.makeText(getContext(), R.string.about_us, Toast.LENGTH_SHORT).show();
-        }
-
-        if(id == R.id.action_contact_us){
-            Toast.makeText(getContext(), R.string.contact_us, Toast.LENGTH_SHORT).show();
-        }
-
-        if(id == R.id.action_sign_out){
-            final String[] items = {String.valueOf(R.string.signout),String.valueOf(R.string.cancel)};
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle("Sign out from Herfa app?");
-            builder.setPositiveButton(R.string.sign_out, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    firebaseAuth.signOut();
-                    //finish();
-                }
-            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-
-            builder.show();
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//
+//        if(id == R.id.action_contact_us){
+//            Toast.makeText(getContext(), R.string.contact_us, Toast.LENGTH_SHORT).show();
+//        }
+//
+//        if(id == R.id.action_sign_out){
+//            final String[] items = {String.valueOf(R.string.signout),String.valueOf(R.string.cancel)};
+//
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//            builder.setTitle("Sign out from Herfa app?");
+//            builder.setPositiveButton(R.string.sign_out, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    firebaseAuth.signOut();
+//                    //finish();
+//                }
+//            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    dialog.dismiss();
+//                }
+//            });
+//
+//            builder.show();
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
 
 //    public void changeLangLocale(String en) {
@@ -381,6 +384,17 @@ public class CraftsFragment extends Fragment implements CraftsAdapter.OnAdapterI
 //    }
 
 
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
+//    }
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+//    }
 
 
 }

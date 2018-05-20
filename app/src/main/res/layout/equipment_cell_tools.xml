@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="@dimen/padding20dp"
+    android:gravity="center"
+    >
+
+    <!--<include android:id="@+id/background"-->
+    <!--layout="@layout/background"/>-->
+
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip1"
+        android:src="@drawable/icon_sewing"
+        android:layout_marginRight="@dimen/margin15dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip2"
+        android:src="@drawable/icon_sewing"
+        android:layout_marginRight="@dimen/margin10dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip3"
+        android:src="@drawable/icon_sewing"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip4"
+        android:src="@drawable/icon_sewing"
+        android:layout_marginRight="@dimen/margin15dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip5"
+        android:src="@drawable/icon_sewing"
+        android:layout_marginRight="@dimen/margin10dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip6"
+        android:src="@drawable/icon_sewing"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip7"
+        android:src="@drawable/icon_sewing"
+        android:layout_marginRight="@dimen/margin15dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip8"
+        android:src="@drawable/icon_sewing"
+        android:layout_marginRight="@dimen/margin10dp"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/equip9"
+        android:src="@drawable/icon_sewing"
+        />
+
+
+</LinearLayout>

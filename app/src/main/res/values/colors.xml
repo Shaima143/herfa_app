@@ -14,5 +14,9 @@
     <color name="switch_color">#bfbebe</color>
     <color name="black">#201f1f</color>
     <color name="navBarBrownTrans">#91999489</color>
-
+    <color name="bgBottomNavigation">#fa121111</color>
+    <color name="navColor">#ff5501</color>
+    <color name="white">#ffffff</color>
+    <color name="greyUncheckedIcons">#afb6b6</color>
+    <color name="customdialogBack">#d6e4d9c6</color>
 </resources>

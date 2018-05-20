@@ -87,7 +87,7 @@
             android:layout_marginBottom="@dimen/margin15dp"/>
 
         <TextView
-            android:id="@+id/tvProfilechangePass"
+            android:id="@+id/tvProfilechangePass2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Change Password"

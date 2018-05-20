@@ -6,10 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.herfa.android.herfa.TermsAndConditions"
     android:orientation="vertical"
-    android:background="@drawable/background"
+    android:background="@drawable/backg"
     android:padding="15dp"
-    android:gravity="center_horizontal"
-    android:alpha="0.8">
+    android:gravity="center_horizontal">
 
     <WebView
         android:id="@+id/terms"

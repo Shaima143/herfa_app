@@ -92,26 +92,26 @@ public class ProfileScreen extends AppCompatActivity {
         int id = item.getItemId();
 
 
-        if(id == R.id.action_sign_out){
-            final String[] items = {String.valueOf(R.string.signout),String.valueOf(R.string.cancel)};
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(ProfileScreen.this);
-            builder.setTitle(R.string.sign_out_from_herfa);
-            builder.setPositiveButton(R.string.sign_out, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    firebaseAuth.signOut();
-                    finish();
-                }
-            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            });
-
-            builder.show();
-        }
+//        if(id == R.id.action_sign_out){
+//            final String[] items = {String.valueOf(R.string.signout),String.valueOf(R.string.cancel)};
+//
+//            AlertDialog.Builder builder = new AlertDialog.Builder(ProfileScreen.this);
+//            builder.setTitle(R.string.sign_out_from_herfa);
+//            builder.setPositiveButton(R.string.sign_out, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    firebaseAuth.signOut();
+//                    finish();
+//                }
+//            }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    dialog.dismiss();
+//                }
+//            });
+//
+//            builder.show();
+//        }
 
         return super.onOptionsItemSelected(item);
     }

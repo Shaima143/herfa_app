@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/margin15dp"
+    android:padding="@dimen/margin10dp"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
     >
 
     <!--<include android:id="@+id/header"-->
@@ -14,8 +17,10 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="0.33"
-        android:layout_marginRight="7dp"
-        android:background="@drawable/homeicon_border">
+        android:layout_marginRight="2dp"
+        android:background="@drawable/homeicon_border"
+        android:layout_gravity="fill_horizontal">
+
         <ImageView
             android:id="@+id/craft_img_one"
             android:clickable="true"
@@ -34,8 +39,10 @@
             android:padding="9dp"
             android:background="@drawable/text_border"
             android:textColor="@color/darkBrown"
-            android:textSize="@dimen/textSize20dp"
-            />
+            android:autoSizeTextType="uniform"
+            android:textSize="@dimen/textSize25dp"
+            android:textStyle="bold"
+            android:fontFamily="cursive"/>
     </LinearLayout>
 
     <!--<LinearLayout-->

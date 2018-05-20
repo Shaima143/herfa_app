@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.herfa.android.herfa.LoginActivity"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+        <com.jgabrielfreitas.core.BlurImageView
+            android:id="@+id/BlurImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/bg" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/textSize15dp"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center"
+                    android:src="@drawable/camera"
+                    app:civ_border_color="@color/darkBrown"
+                    app:civ_border_width="3dp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/margin5dp"
+                    android:padding="@dimen/padding20dp"
+                    android:layout_marginBottom="@dimen/margin50dp">
+
+
+                    <EditText
+                        android:id="@+id/editTextUsernameSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/edittextshape"
+                        android:hint="@string/name"
+                        android:inputType="textEmailAddress"
+                        android:padding="5dp"
+                        android:paddingLeft="0dp"
+                        android:gravity="center"/>
+
+                    <EditText
+                        android:id="@+id/editTextEmailSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/edittextshape"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:padding="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="center"/>
+
+
+                    <EditText
+                        android:id="@+id/editTextPasswordSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/edittextshape"
+                        android:hint="@string/password"
+                        android:inputType="textPassword"
+                        android:padding="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="center"/>
+
+                    <EditText
+                        android:id="@+id/editTextReEnterPasswordSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="25dp"
+                        android:background="@drawable/edittextshape"
+                        android:hint="@string/re_enter_password"
+                        android:inputType="textPassword"
+                        android:padding="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="center"/>
+
+
+                    <Switch
+                        android:id="@+id/switch1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/seeking_knowledge"
+                        android:textSize="@dimen/textSize17dp"
+                        android:theme="@style/SCBSwitch"
+                        android:textColor="@color/lightBrown"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"/>
+
+                    <Switch
+                        android:id="@+id/switch2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/trader_buyer"
+                        android:textSize="@dimen/textSize17dp"
+                        android:theme="@style/SCBSwitch"
+                        android:textColor="@color/lightBrown"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"/>
+
+                    <Switch
+                        android:id="@+id/switch3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="I provide delivery service"
+                        android:layout_marginBottom="4dp"
+                        android:textSize="@dimen/textSize17dp"
+                        android:theme="@style/SCBSwitch"
+                        android:textColor="@color/lightBrown"
+                        android:fontFamily="serif"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="bottom|center"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/buttonCreateAccount"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="@dimen/margin30dp"
+                        android:layout_marginRight="@dimen/margin30dp"
+                        android:background="@drawable/loginbuttonshape"
+                        android:text="@string/create_account"
+                        android:textAllCaps="false"
+                        android:textColor="@color/brandingColor"
+                        android:textSize="@dimen/textSize20dp" />
+
+                    <Button
+                        android:id="@+id/buttonAlreadyRegistered"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="@dimen/margin30dp"
+                        android:layout_marginRight="@dimen/margin30dp"
+                        android:text="@string/already_registered"
+                        android:textAllCaps="false"
+                        android:textColor="@color/brandingColor"
+                        android:textSize="@dimen/textSize17dp" />
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</ScrollView>

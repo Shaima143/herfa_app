@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> {
@@ -55,12 +57,26 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(LevelAdapter.ViewHolder holder, final int position) {
         Equipements levelDetails=levelDetailsList.get(position);
-        holder.textView1.setText(levelDetails.getEqui1());
-        holder.textView2.setText(levelDetails.getEqui2());
-        holder.textView3.setText(levelDetails.getEqui3());
+
+//        holder.textView1.setText(levelDetails.getEqui1());
+//        holder.textView2.setText(levelDetails.getEqui2());
+//        holder.textView3.setText(levelDetails.getEqui3());
+
+//        Picasso.with(context).load(LevelDetails.()).
+//                resize(50, 50).into(holder.craftsImageTwo);
+
+//        holder.imageView1.setImageURI(Uri.parse(levelDetails.getEqui1()));
+//        holder.imageView2.setImageURI(Uri.parse(levelDetails.getEqui2()));
+//        holder.imageView3.setImageURI(Uri.parse(levelDetails.getEqui3()));
+
+    Picasso.with(context).load(levelDetails.getEqui1()).resize(200,100).into(holder.imageView1);
+    Picasso.with(context).load(levelDetails.getEqui2()).resize(200,100).into(holder.imageView2);
+    Picasso.with(context).load(levelDetails.getEqui3()).resize(200,100).into(holder.imageView3);
 
        // holder.imageView.setImageResource(levelDetails.getEquipment_img());
         //holder.videoView.setVideoURI(Uri.parse(levelDetails.getVedio()));
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,18 +91,22 @@ public class LevelAdapter extends RecyclerView.Adapter<LevelAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView1, textView2, textView3;
+        //TextView textView1, textView2, textView3;
         VideoView videoView;
-        ImageView imageView;
+        ImageView imageView1, imageView2, imageView3;
 
         public ViewHolder(View itemView) {
             super(itemView);
            // imageView=itemView.findViewById(R.id.equipment_imageCell);
            // videoView=itemView.findViewById(R.id.videoView);
 
-            textView1=itemView.findViewById(R.id.equip1);
-            textView2=itemView.findViewById(R.id.equip2);
-            textView3=itemView.findViewById(R.id.equip3);
+//            textView1=itemView.findViewById(R.id.equip1);
+//            textView2=itemView.findViewById(R.id.equip2);
+//            textView3=itemView.findViewById(R.id.equip3);
+
+            imageView1=itemView.findViewById(R.id.equip1);
+            imageView2=itemView.findViewById(R.id.equip2);
+            imageView3=itemView.findViewById(R.id.equip3);
 
         }
     }

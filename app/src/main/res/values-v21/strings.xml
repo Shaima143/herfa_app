@@ -55,9 +55,36 @@
     <string name="description">Description</string>
     <string name="used_equepment">Used Equipments</string>
     <string name="handcrafts">Handcrafts</string>
-    <string name="product_name">Product name</string>
     <string name="carpentry_small">carpentry</string>
     <string name="introduction_small">introduction</string>
     <string name="update_changes">Update changes</string>
+    <string name="Welcome_back">Welcome back</string>
+    <string name="levels">Levels</string>
+    <string name="select_from_gallery">Select from gallery</string>
+    <string name="choose_profile_photo">Choose profile photo</string>
+    <string name="forgot_your_password">Forgot your Password?</string>
+    <string name="please_provide_email">Please provide your email</string>
+    <string name="account_created_successfully">Account created successfully</string>
+    <string name="select_or_capture_image">Please select or capture an image</string>
+    <string name="enter_name">Please enter your name</string>
+    <string name="enter_email">Please enter a valid email</string>
+    <string name="enter_pwd">Please enter your password</string>
+    <string name="pwd_should_be_more_that_7">Password should be more than 7 characters long</string>
+    <string name="please_select_at_least_one">please select at least one user type</string>
+    <string name="please_select_at_least_one_user_type">Please select at least one user type</string>
+    <string name="change_email">Change Email</string>
+    <string name="log_out">Log out</string>
+    <string name="price">Price</string>
+    <string name="buy">Buy</string>
+    <string name="product_name">Product name</string>
+    <string name="product_type">Product type</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="delete">Delete account</string>
+    <string name="delete_herfa_account">Delete your account on Herfa?</string>
+    <string name="Secondproject">Secondproject</string>
+    <string name="Moreprotools">Moreprotools</string>
+    <string name="furniture">Furniture</string>
+    <string name="productDesc">Product Description</string>
+    <string name="priceProduct">Product Price</string>
 
 </resources>

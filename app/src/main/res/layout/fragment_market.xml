@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.herfa.android.herfa.ProfileScreen"
-    android:background="@drawable/background">
+    android:background="@drawable/backg"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/back_button_market"
+        android:layout_height="63dp"
+        android:layout_width="match_parent"></include>
 
     <!--<android.support.design.widget.BottomNavigationView-->
         <!--android:id="@+id/navigation"-->
@@ -23,19 +29,22 @@
 
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-        android:layout_margin="@dimen/margin10dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:layout_margin="@dimen/margin10dp"
+        android:gravity="center"
+        android:layout_gravity="center">
 
     <android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/recyclerView_marketFragment"/>
+    android:layout_height="wrap_content"
+    android:id="@+id/recyclerView_marketFragment"
+        android:layout_centerInParent="true" />
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
 
 
 

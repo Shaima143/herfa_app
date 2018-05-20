@@ -1,14 +1,15 @@
 package com.herfa.android.herfa;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -18,12 +19,17 @@ import java.util.ArrayList;
 
 public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<MarketDetails> marketDetailsArrayList;
+    private int[] marketDetailsArrayList;
+    private MarketAdapter.OnAdapterItemClick onAdapterItemClick;
 
+
+    public interface OnAdapterItemClick{
+        public void onItemClick(int position);
+    }
     public MarketAdapter() {
     }
 
-    public MarketAdapter(Context context, ArrayList<MarketDetails> marketDetailsArrayList) {
+    public MarketAdapter(Context context, int[] marketDetailsArrayList) {
         this.context = context;
         this.marketDetailsArrayList = marketDetailsArrayList;
     }
@@ -36,11 +42,11 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         this.context = context;
     }
 
-    public ArrayList<MarketDetails> getMarketDetailsArrayList() {
+    public int[]getMarketDetailsArrayList() {
         return marketDetailsArrayList;
     }
 
-    public void setMarketDetailsArrayList(ArrayList<MarketDetails> marketDetailsArrayList) {
+    public void setMarketDetailsArrayList(int[] marketDetailsArrayList) {
         this.marketDetailsArrayList = marketDetailsArrayList;
     }
 
@@ -53,17 +59,25 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        MarketDetails marketDetails=marketDetailsArrayList.get(position);
-        holder.textView.setText(marketDetails.getProduct_name());
-        Picasso.with(context).load(marketDetails.getProduct_image()).
-                resize(50, 50).into(holder.imageView);
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        //MarketDetails marketDetails=marketDetailsArrayList.get(position);
+//        holder.textView.setText(marketDetails.getProduct_name());
 
+        holder.imageView.setImageResource(marketDetailsArrayList[position]);
+
+//        Picasso.with(context).load(marketDetails.getProduct_image()).
+//                resize(50, 50).into(holder.imageView);
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onAdapterItemClick.onItemClick(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return marketDetailsArrayList.size();
+        return marketDetailsArrayList.length;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -73,11 +87,61 @@ public class MarketAdapter extends RecyclerView.Adapter<MarketAdapter.ViewHolder
         public ViewHolder(View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.product_img);
-            textView=itemView.findViewById(R.id.product_txt);
+            //   textView=itemView.findViewById(R.id.product_txt);
+
+
+//            imageView.setImageBitmap(
+//                decodeSampledBitmapFromResource(getResources(), R.id.product_img, 100, 100));
+
         }
+
+
+    }
+
+    public void setOnAdapterItemClick(MarketAdapter.OnAdapterItemClick onAdapterItemClick){
+        this.onAdapterItemClick=onAdapterItemClick;
     }
 
 
+//    public static int calculateInSampleSize(
+//            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+//        // Raw height and width of image
+//        final int height = options.outHeight;
+//        final int width = options.outWidth;
+//        int inSampleSize = 1;
+//
+//        if (height > reqHeight || width > reqWidth) {
+//
+//            final int halfHeight = height / 2;
+//            final int halfWidth = width / 2;
+//
+//            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+//            // height and width larger than the requested height and width.
+//            while ((halfHeight / inSampleSize) >= reqHeight
+//                    && (halfWidth / inSampleSize) >= reqWidth) {
+//                inSampleSize *= 2;
+//            }
+//        }
+//
+//        return inSampleSize;
+//    }
+//
+//
+//    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+//                                                         int reqWidth, int reqHeight) {
+//
+//        // First decode with inJustDecodeBounds=true to check dimensions
+//        final BitmapFactory.Options options = new BitmapFactory.Options();
+//        options.inJustDecodeBounds = true;
+//        BitmapFactory.decodeResource(res, resId, options);
+//
+//        // Calculate inSampleSize
+//        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+//
+//        // Decode bitmap with inSampleSize set
+//        options.inJustDecodeBounds = false;
+//        return BitmapFactory.decodeResource(res, resId, options);
+//    }
 
 
 }

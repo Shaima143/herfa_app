@@ -64,7 +64,7 @@ public class CraftsAdapter extends RecyclerView.Adapter<CraftsAdapter.ViewHolder
 //        Picasso.with(context).load(craftsDetails.getCraftsImageOne()).
 //                resize(50, 50).into(holder.craftsImageOne);
 //        Picasso.with(context).load(craftsDetails.getCraftsImageTwo()).
-//                resize(50, 50).into(holder.craftsImageTwo);
+              //  resize(50, 50).into(holder.craftsImageTwo);
 
         holder.craftNameOne.setText(craftsDetails.getCraftNameOne());
         holder.craftsImageOne.setOnClickListener(new View.OnClickListener() {

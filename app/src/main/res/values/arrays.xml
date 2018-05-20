@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="resize_text">
+        <item>15dp</item>
+        <item>20dp</item>
+        <item>25dp</item>
+        <item>30dp</item>
+        <item>35dp</item>
+        <item>40dp</item>
+        <item>45dp</item>
+    </array>
+</resources>

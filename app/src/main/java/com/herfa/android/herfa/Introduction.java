@@ -5,8 +5,17 @@ import android.net.Uri;
 public class Introduction {
 
     private String desc;
-    private String vedio;
-    private Equipements equipments;
+    private String video;
+    private Equipements Equipments;
+
+    public Introduction() {
+    }
+
+    public Introduction(String desc, String video, Equipements equipments) {
+        this.desc = desc;
+        this.video = video;
+        Equipments = equipments;
+    }
 
     public String getDesc() {
         return desc;
@@ -16,19 +25,19 @@ public class Introduction {
         this.desc = desc;
     }
 
-    public void setVedio(String vedio) {
-        this.vedio = vedio;
+    public String getVideo() {
+        return video;
+    }
+
+    public void setVideo(String video) {
+        this.video = video;
     }
 
     public Equipements getEquipments() {
-        return equipments;
+        return Equipments;
     }
 
     public void setEquipments(Equipements equipments) {
-        this.equipments = equipments;
-    }
-
-    public String getVedio() {
-        return vedio;
+        Equipments = equipments;
     }
 }

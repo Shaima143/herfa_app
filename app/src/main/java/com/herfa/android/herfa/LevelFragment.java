@@ -43,12 +43,22 @@ public class LevelFragment extends Fragment implements LevelsAdapter.OnAdapterIt
     private static final String ARG_PARAM2 = "param2";
 
     private ArrayList<Equipements> levelDetailsArrayList;
+    private ArrayList<EquipmentsBasicTools> equipmentsBasicTools;
+    private RecyclerView.LayoutManager layoutManager;
+    private RecyclerView equi_List;
 
     //private ArrayList<Equipements> arrayList = new ArrayList<>();
     //private ArrayAdapter<Equipements> adapter;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+
+    TextView title;
+
+    @Override
+    public Object getExitTransition() {
+        return super.getExitTransition();
+    }
 
     MediaController mediaController;
 
@@ -95,13 +105,21 @@ public class LevelFragment extends Fragment implements LevelsAdapter.OnAdapterIt
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_level, container, false);
 
+        title = view.findViewById(R.id.title);
+        title.setText(getString(R.string.learn));
+
+
         final TextView descInfo=view.findViewById(R.id.desc_info_txt);
         final VideoView videoView=view.findViewById(R.id.videoView);
-        final RecyclerView equi_List =view.findViewById(R.id.eqipment_listview);
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),
-                LinearLayoutManager.VERTICAL,false);
+        equi_List=view.findViewById(R.id.eqipment_listview);
+        equi_List.setNestedScrollingEnabled(true);
+        layoutManager= new LinearLayoutManager(getContext(),
+                LinearLayoutManager.HORIZONTAL,false);
+
+        equi_List.setLayoutManager(layoutManager);
 
         levelDetailsArrayList=new ArrayList<>();
+        equipmentsBasicTools=new ArrayList<>();
 
         //levelAdapter.setOnAdapterItemClick(this);
 
@@ -129,50 +147,153 @@ public class LevelFragment extends Fragment implements LevelsAdapter.OnAdapterIt
                 //get crafts name
                 for(DataSnapshot snap:dataSnapshot.getChildren()){
                     if(mParam1==R.string.carpentry && mParam2==R.string.introduction){
-                        int craft_name=R.string.carpentry_small;
-                        int craft_level=R.string.introduction_small;
-                        Toast.makeText(getContext(),getString(mParam1),Toast.LENGTH_LONG).show();
+
+                       // int craft_name=R.string.carpentry_small;
+                        //int craft_level=R.string.introduction_small;
+
+                        //Toast.makeText(getContext(),getString(mParam1),Toast.LENGTH_LONG).show();
                         //chech if craft=current craft (carpentry)
-                        if (snap.getKey().equals(getString(craft_name))){
+                        if (snap.getKey().equals(getString(mParam1))){
                             //get children of (carpentry) which is Introduction
                             for(DataSnapshot snap2:snap.getChildren()){
-                                if(snap2.getKey().equals(getString(craft_level))){
+                                if(snap2.getKey().equals(getString(mParam2))){
                                     // for(DataSnapshot snap3:dataSnapshot.getChildren()){
                                     Introduction info= snap2.getValue(Introduction.class);
                                     Equipements equip=info.getEquipments();
                                     levelDetailsArrayList.add(equip);
 
-                                    //Toast.makeText(getContext(),info.getDesc(), Toast.LENGTH_SHORT).show();
-                                    //descInfo.setText(equip.getEqui1());
+                                    descInfo.setText(info.getDesc());
+
+                                    videoView.setMediaController(mediaController);
+                                    videoView.setVideoURI(Uri.parse(info.getVideo()));
+                                    videoView.requestFocus();
+                                   // videoView.start();
+                                }
+                            }
+                        }
+                    }
+
+                     if(mParam1 == R.string.carpentry &&mParam2 == R.string.basic_tools){
+                        int craft_name=R.string.carpentry_small;
+                        String craft_level= getString(R.string.Basictools);
+                       // Toast.makeText(getContext(),getString(mParam1)+getString(mParam2),Toast.LENGTH_LONG).show();
+                        if (snap.getKey().equals(getString(mParam1))){
+                            //get children of (carpentry) which is Introduction
+                            for(DataSnapshot snap2:snap.getChildren()){
+                                if(snap2.getKey().equals(craft_level)){
+                                    // for(DataSnapshot snap3:dataSnapshot.getChildren()){
+                                    Toast.makeText(getContext(),snap2.getKey(),Toast.LENGTH_LONG).show();
+                                    BasicTools info= snap2.getValue(BasicTools.class);
+                                    EquipmentsBasicTools equip=info.getEquipments();
+                                    equipmentsBasicTools.add(equip);
 
                                     descInfo.setText(info.getDesc());
 
-                                     //equi_List.add();
+                                    videoView.setMediaController(mediaController);
+                                    videoView.setVideoURI(Uri.parse(info.getVideo()));
+                                    videoView.requestFocus();
+                                    //videoView.start();
+                                }
+                            }
+                        }
+                    }
 
-                                    //videoView.setVideoURI(info.getVedio());
+                    if(mParam1 == R.string.carpentry && mParam2==R.string.the_first_project){
+                        int craft_name=R.string.carpentry_small;
+                        String craft_level= getString(R.string.Firstproject);
+
+                        if (snap.getKey().equals(getString(mParam1))){
+                            //get children of (carpentry) which is Introduction
+                            for(DataSnapshot snap2:snap.getChildren()){
+                                if(snap2.getKey().equals(craft_level)){
+                                    // for(DataSnapshot snap3:dataSnapshot.getChildren()){
+                                    Introduction info= snap2.getValue(Introduction.class);
+                                    Equipements equip=info.getEquipments();
+                                    levelDetailsArrayList.add(equip);
+
+                                    descInfo.setText(info.getDesc());
 
                                     videoView.setMediaController(mediaController);
-                                    videoView.setVideoURI(Uri.parse(info.getVedio()));
+                                    videoView.setVideoURI(Uri.parse(info.getVideo()));
                                     videoView.requestFocus();
-                                    videoView.start();
+                                    //videoView.start();
 
-
-                                    LevelAdapter levelAdapter=new LevelAdapter(getContext(),levelDetailsArrayList);
-//                                    Equipements string = dataSnapshot.getValue(Equipements.class);
-//                                    arrayList.add(string);
-//                                    adapter.notifyDataSetChanged();
 
                                 }
                             }
                         }
 
                     }
+                    if(mParam1 == R.string.carpentry && mParam2==R.string.the_second_project){
+                        int craft_name=R.string.carpentry_small;
+                        String craft_level= getString(R.string.Secondproject);
 
+                        if (snap.getKey().equals(getString(mParam1))){
+                            //get children of (carpentry) which is Introduction
+                            for(DataSnapshot snap2:snap.getChildren()){
+                                if(snap2.getKey().equals(craft_level)){
+                                    // for(DataSnapshot snap3:dataSnapshot.getChildren()){
+                                    Introduction info= snap2.getValue(Introduction.class);
+                                    Equipements equip=info.getEquipments();
+                                    levelDetailsArrayList.add(equip);
+
+                                    descInfo.setText(info.getDesc());
+
+                                    videoView.setMediaController(mediaController);
+                                    videoView.setVideoURI(Uri.parse(info.getVideo()));
+                                    videoView.requestFocus();
+                                    //videoView.start();
+
+
+                                }
+                            }
+                        }
+
+                    }
+                    if(mParam1 == R.string.carpentry && mParam2==R.string.more_professional_tools){
+                        int craft_name=R.string.carpentry_small;
+                        String craft_level= getString(R.string.Moreprotools);
+
+                        if (snap.getKey().equals(getString(mParam1))){
+                            //get children of (carpentry) which is Introduction
+                            for(DataSnapshot snap2:snap.getChildren()){
+                                if(snap2.getKey().equals(craft_level)){
+                                    // for(DataSnapshot snap3:dataSnapshot.getChildren()){
+                                    Introduction info= snap2.getValue(Introduction.class);
+                                    Equipements equip=info.getEquipments();
+                                    levelDetailsArrayList.add(equip);
+
+                                    descInfo.setText(info.getDesc());
+
+                                    videoView.setMediaController(mediaController);
+                                    videoView.setVideoURI(Uri.parse(info.getVideo()));
+                                    videoView.requestFocus();
+                                    //videoView.start();
+
+
+                                }
+                            }
+                        }
+
+                    }
                 }
-                LevelAdapter levelAdapter = new LevelAdapter(getContext(),levelDetailsArrayList);
-                equi_List.setLayoutManager(layoutManager);
-                levelAdapter.notifyDataSetChanged();
-                equi_List.setAdapter(levelAdapter);
+
+
+
+
+                if(levelDetailsArrayList.size()>0){
+                    LevelAdapter levelAdapter = new LevelAdapter(getContext(),levelDetailsArrayList);
+                    equi_List.setLayoutManager(layoutManager);
+                    levelAdapter.notifyDataSetChanged();
+                    equi_List.setAdapter(levelAdapter);
+                }
+                //Toast.makeText(getContext(),levelDetailsArrayList.size()+"",Toast.LENGTH_SHORT).show();
+                if (equipmentsBasicTools.size()>0){
+                    LevelAdapterForBasicTools levelAdapter = new LevelAdapterForBasicTools(getContext(),equipmentsBasicTools);
+                    equi_List.setLayoutManager(layoutManager);
+                    levelAdapter.notifyDataSetChanged();
+                    equi_List.setAdapter(levelAdapter);
+                }
             }
 
             @Override
@@ -211,13 +332,13 @@ public class LevelFragment extends Fragment implements LevelsAdapter.OnAdapterIt
     @Override
     public void onItemClick(int position) {
 
-        if(position==0){
+        //if(position==0){
             FragmentTransaction fragmentTransaction=getActivity().getSupportFragmentManager().beginTransaction();
-            Fragment fragment= new LevelFragment();
+            Fragment fragment= new CraftsFragment();
             fragmentTransaction.replace(R.id.main_container,fragment);
             fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
             fragmentTransaction.commit();
-        }
+        //}
 
     }
 

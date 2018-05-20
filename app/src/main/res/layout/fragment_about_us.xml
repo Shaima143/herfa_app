@@ -1,0 +1,132 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backg"
+    tools:context="com.herfa.android.herfa.AboutUsFragment"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/back_about_us"
+        android:layout_height="63dp"
+        android:layout_width="match_parent"></include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Who are we?"
+        android:textStyle="bold"
+        android:textColor="@color/lightBrown"
+        android:textSize="@dimen/textSize30dp"
+        android:layout_marginLeft="@dimen/padding20dp"
+        android:layout_marginTop="@dimen/margin10dp"
+        android:layout_marginBottom="@dimen/padding10dp"/>
+
+
+    <TextView
+        android:id="@+id/aboutAs_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding20dp"
+        android:layout_marginRight="@dimen/padding20dp"
+        android:lineSpacingExtra="7dp"
+        android:textSize="@dimen/textSize15dp"
+        android:text="Herfa is an application dedicated to passionate learners who have an interest to self-learn different handcrafts in a short time using specific tools.
+There are different levels in each craft that the user can progress in and recieve achievements.
+Users can buy the handcrafted products that are available in our market which are made by other Herfa app users" />
+
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find us here!"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize30dp"
+        android:layout_marginTop="@dimen/margin20dp"
+        android:layout_marginBottom="@dimen/padding10dp"
+        android:fontFamily="sans-serif"
+        android:textColor="@color/lightBrown"
+        android:layout_marginLeft="@dimen/padding20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin20dp"
+        android:paddingRight="@dimen/padding20dp"
+        android:orientation="horizontal"
+        >
+
+
+        <ImageView
+            android:id="@+id/imgTwitter_contactUs"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/twitter" />
+
+        <TextView
+            android:id="@+id/txt_Twitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding5dp"
+            android:text="@string/hello_blank_fragment" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin20dp"
+        android:paddingRight="@dimen/padding20dp"
+        android:paddingTop="@dimen/padding5dp"
+        android:paddingBottom="@dimen/padding5dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imgGoogle_contactUs"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/google" />
+
+        <TextView
+            android:id="@+id/txt_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding5dp"
+            android:text="@string/hello_blank_fragment" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="@dimen/margin20dp"
+        android:paddingRight="@dimen/padding20dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imgFacebook_contactUs"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/facebook"
+            />
+
+        <TextView
+            android:id="@+id/txt_facebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding5dp"
+            android:text="@string/hello_blank_fragment" />
+    </LinearLayout>
+
+
+</LinearLayout>
