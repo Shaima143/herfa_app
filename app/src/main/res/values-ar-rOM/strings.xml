@@ -30,6 +30,8 @@
     <string name="om">الحلوى العمانية</string>
     <string name="about_us">معلومات عنّا</string>
     <string name="introduction">المقدمة</string>
+    <string name="more_professional_tools">مزيد من الأدوات المهنية</string>
+    <string name="the_first_project">المشروع الأول</string>
     <string name="learn">تعلّم</string>
     <string name="market">السوق</string>
     <string name="achievements">الإنجازات</string>
@@ -41,7 +43,7 @@
     <string name="sign_out_from_herfa">تسجيل خروج من التطبيق؟</string>
     <string name="full_name">الإسم الكامل</string>
     <string name="the_second_project">المشروع الثاني</string>
-    <string name="basic_tools">الإدوات الأساسية</string>
+    <string name="basic_tools">الأدوات الأساسية</string>
     <string name="carpenter_junior">نجّار صغير</string>
     <string name="gender">الجنس</string>
     <string name="please_enter_pwd">من فضلك أدخل رقمك السري</string>
@@ -54,7 +56,7 @@
     <string name="pla">كلام</string>
     <string name="description">الوصف</string>
     <string name="used_equepment">الأدوات المستخدمة</string>
-    <string name="handcrafts">حرف يدوية</string>
+    <string name="handcrafts">الحرف اليدوية</string>
     <string name="carpentry_small">carpentry</string>
     <string name="introduction_small">introduction</string>
     <string name="update_changes">تحديث التغييرات</string>
@@ -78,11 +80,17 @@
     <string name="buy">شراء</string>
     <string name="product_name">اسم المنتج</string>
     <string name="product_type">نوع المنتج</string>
-    <string name="Secondproject">Secondproject</string>
-    <string name="Moreprotools">Moreprotools</string>
+    <string name="Secondproject_firebase">Secondproject</string>
+    <string name="Moreprotools_firebase">Moreprotools</string>
     <string name="delete_account">حذف الحساب</string>
     <string name="comingSoon">قريبًا</string>
-    <string name="furniture">Furniture</string>
+    <string name="furniture">أثاث</string>
     <string name="productDesc">Product Description</string>
     <string name="priceProduct">Product Price</string>
+    <string name="i_provide_delivery_service">أنا أقدم خدمة التوصيل</string>
+    <string name="desc">منتج مصنوع من الخشب بجودة عالية، للإستخدام المنزلي أو المكتبي أو في الحديقة.</string>
+    <string name="congratulations_you_have_recieved_this_badge_on_completing_the_first_task">
+        تهانينا! لقد تلقيت هذه الشارة لأنك أكملت المهمة الأولى!</string>
+    <string name="introduction_firebase">Introduction</string>
+    <string name="carpentry_firebase">Carpentry</string>
 </resources>

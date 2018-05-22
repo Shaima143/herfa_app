@@ -16,6 +16,7 @@ import android.net.Uri;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 
@@ -74,8 +75,12 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileDescriptor;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -209,35 +214,10 @@ public class UserProfileFragment extends Fragment {
         deleteProfile.setVisibility(view.INVISIBLE);
         updateProfile.setVisibility(View.INVISIBLE);
         iconChangeProfileImage.setVisibility(view.INVISIBLE);
+        UserprofileImage.setClickable(false);
 
-//        switchEdit.setOnClickListener(new View.OnClickListener() {
-//            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-//            @Override
-//            public void onClick(View v) {
-//                if(switchEdit.isChecked()){
-//                    usernameEditText.setEnabled(true);
-//                    emailEditText.setEnabled(true);
-//                    updateProfile.setVisibility(View.VISIBLE);
-//                    deleteProfile.setVisibility(View.VISIBLE);
-//                    usernameEditText.setBackground(Drawable.createFromPath(String.valueOf(R.drawable.edittextshape)));
-//                }
-//                else{
-//                    usernameEditText.setEnabled(false);
-//                    emailEditText.setEnabled(false);
-//                    updateProfile.setVisibility(View.INVISIBLE);
-//                    deleteProfile.setVisibility(View.INVISIBLE);
-//                    usernameEditText.setBackground(null);
-//                }
-//            }
-//        });
 
-       // UserprofileImage.setImageAlpha(0);
         UserprofileImage.setImageAlpha(204);
-
-
-//        Bitmap bitmap = BitmapFactory.decodeResource(getResources(),(R.drawable.camera));
-//        Bitmap blurredBitmap = blur(bitmap);
-//        UserprofileImage.setImageBitmap(blurredBitmap);
 
 
         if(count==0){
@@ -286,21 +266,6 @@ public class UserProfileFragment extends Fragment {
 
             }
         });
-
-//        back = view.findViewById(R.id.back_button_profile);
-//
-//        //logout=view.findViewById(R.id.logOut);
-//
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-//                Fragment fragment = new CraftsFragment();
-//                fragmentTransaction.replace(R.id.main_container,fragment);
-//                fragmentTransaction.addToBackStack(fragmentTransaction.getClass().getSimpleName());
-//                fragmentTransaction.commit();
-//            }
-//        });
 
 
 
@@ -366,7 +331,6 @@ public class UserProfileFragment extends Fragment {
                     }
                 });
 
-                //onMenuItemClick(MenuItem item);
                 popup.show();
 
             }
@@ -435,14 +399,6 @@ public class UserProfileFragment extends Fragment {
 //            }
         //});
 
-        UserprofileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(getContext(),"clicked",Toast.LENGTH_LONG).show();
-
-            }
-        });
-
         changeEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -460,6 +416,10 @@ public class UserProfileFragment extends Fragment {
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String uname = usernameEditText.getText().toString();
+                updateProfile(uname);
+
 //                v.startAnimation(buttonClick);
 //                if(usernameEditText.getText().toString().length()==0){
 //                    usernameEditText.setError("Please enter a new username");
@@ -468,8 +428,46 @@ public class UserProfileFragment extends Fragment {
 //
 //                showDialog();
 
-            }
+//                final DatabaseReference databaseReference = FirebaseDatabase.getInstance()
+//                        .getReference("UserInfo").child("username");
+//
+//                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(DataSnapshot dataSnapshot) {
+//                        String newUsername = usernameEditText.getText().toString();
+//                        databaseReference.setValue(newUsername);
+//                        Toast.makeText(getContext(), "updated", Toast.LENGTH_LONG).show();
+//
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(DatabaseError databaseError) {
+//
+//                    }
+//                });
+
+
+
+
+
+//                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(
+//                        usernameEditText.getText().toString()).build();
+//
+//                firebaseUser.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//                            Log.d(TAG, "User profile updated.");
+//                            Toast.makeText(getContext(), "updated", Toast.LENGTH_LONG).show();
+//                        }
+//                    }
+//                });
+//
+           }
         });
+
+
+
 
 
 
@@ -551,7 +549,7 @@ public class UserProfileFragment extends Fragment {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG,"Ocurrio un error durante la eliminación del usuario", e);
+                        Log.e(TAG,"An error occurred", e);
                     }
                 });
             }
@@ -568,36 +566,16 @@ public class UserProfileFragment extends Fragment {
 });
 
 
-//        logout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                FirebaseAuth.getInstance().signOut();
-//                //return;
-//                //Toast.makeText(getContext(), "signed out", Toast.LENGTH_SHORT).show();
-//
-//                getActivity().finish();
-//                System.exit(0);
-//
-//                return;
-//            }
-//        });
+
+     UserprofileImage.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             selectImage();
+         }
+     });
 
 
 
-
-
-
-
-//        switchEdit.setChecked(false);
-//
-//        if(switchEdit.isChecked()){
-//            usernameEditText.setEnabled(true);
-//            updateProfile.setVisibility(View.VISIBLE);
-//        }
-//        else {
-//            usernameEditText.setEnabled(true);
-//            updateProfile.setVisibility(View.VISIBLE);
-//        }
 
 
         return view;
@@ -658,113 +636,33 @@ public class UserProfileFragment extends Fragment {
         }
 
         if(requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK){
-//            Uri selectedImage = data.getData();
-//            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-//
-//            Cursor cursor = getContentResolver().query(selectedImage,
-//                    filePathColumn, null, null, null);
-//            cursor.moveToFirst();
-//
-//            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-//            String picturePath = cursor.getString(columnIndex);
-//            cursor.close();
-//
-//            Bitmap bmp = null;
-//            try {
-//                //bmp = getBitmapFromUri(selectedImage);
-//                bmp = getBitmapFromUri(selectedImage);
-//            } catch (IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//            profile_photo = Bitmap.createScaledBitmap(bmp, 512, 512, true);
-//            profileImage.setImageBitmap(profile_photo);
+
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+
+            Cursor cursor = getContext().getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            Bitmap bmp = null;
+            try {
+                //bmp = getBitmapFromUri(selectedImage);
+                bmp = getBitmapFromUri(selectedImage);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            profile_photo = Bitmap.createScaledBitmap(bmp, 512, 512, true);
+            UserprofileImage.setImageBitmap(profile_photo);
 
         }
     }
 
-    //private Bitmap getBitmapFromUri(Uri uri) throws IOException {
-//        ParcelFileDescriptor parcelFileDescriptor =
-//                getContentResolver().openFileDescriptor(uri, "r");
-//        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
-//        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
-//        parcelFileDescriptor.close();
-//        return image;
-//    }
 
-
-
-
-        private void selectImage(){
-            //final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
-            final CharSequence[] items = {getString(R.string.take_photo), getString(R.string.select_from_gallery),
-                    getString(R.string.cancel)};
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-            builder.setTitle(getString(R.string.choose_profile_photo));
-            AlertDialog.Builder builder1 = builder.setItems(items, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int item) {
-                    //boolean result = Utility.checkPermission(SignUpActivity.this);
-
-                    if (items[item].equals(getString(R.string.take_photo))) {
-                        //cameraIntent();
-                        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(i, IMAGE_CAPTURE_REQUEST_CODE);
-                    }
-                    else if (items[item].equals(getString(R.string.select_from_gallery))) {
-//                    Intent i = new Intent();
-//                    i.setType("image/*");
-//                    i.setAction(Intent.ACTION_GET_CONTENT);
-//                    startActivityForResult(Intent.createChooser(i, "Select Picture"), PICK_IMAGE_REQUEST);
-
-//                    Intent intent = new Intent();
-//                    intent.setType("image/*");
-//                    intent.setAction(Intent.ACTION_GET_CONTENT);
-//                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-
-
-                        Intent i = new Intent(
-                                Intent.ACTION_PICK,
-                                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                        startActivityForResult(i, RESULT_LOAD_IMAGE);
-
-                    }
-                    else if (items[item].equals(getString(R.string.cancel))) {
-                        dialog.dismiss();
-
-                    }
-                }
-            });
-            builder.show();
-
-        }
-
-
-    private void cameraIntent(){
-
-        Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(i, IMAGE_CAPTURE_REQUEST_CODE);
-
-//        profileImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivityForResult(i, IMAGE_CAPTURE_REQUEST_CODE);
-//
-//            }
-//        });
-    }
-
-
-
-    private void galleryIntent(){
-//        Intent i = new Intent();
-//        i.setType("image/*");
-//        i.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(Intent.createChooser(i,"Select photo"), SELECT_FILE);
-    }
 
 
 
@@ -884,29 +782,57 @@ public class UserProfileFragment extends Fragment {
     }
 
 
+    private void selectImage(){
+        //final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+        final CharSequence[] items = {getString(R.string.take_photo), getString(R.string.select_from_gallery),
+                getString(R.string.cancel)};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(getString(R.string.choose_profile_photo));
+        AlertDialog.Builder builder1 = builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int item) {
+                //boolean result = Utility.checkPermission(SignUpActivity.this);
+
+                if (items[item].equals(getString(R.string.take_photo))) {
+
+                    Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(i, IMAGE_CAPTURE_REQUEST_CODE);
+                }
+                else if (items[item].equals(getString(R.string.select_from_gallery))) {
+                    Intent i = new Intent(
+                            Intent.ACTION_PICK,
+                            android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                    startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+                }
+                else if (items[item].equals(getString(R.string.cancel))) {
+                    dialog.dismiss();
+
+                }
+            }
+        });
+        builder.show();
+
+    }
 
 
-//    //Set the radius of the Blur. Supported range 0 < radius <= 25
-//    private static final float BLUR_RADIUS = 25f;
-//
-//    public Bitmap blur(Bitmap image) {
-//        if (null == image) return null;
-//
-//        Bitmap outputBitmap = Bitmap.createBitmap(image);
-//        final RenderScript renderScript = RenderScript.create(getContext());
-//        Allocation tmpIn = Allocation.createFromBitmap(renderScript, image);
-//        Allocation tmpOut = Allocation.createFromBitmap(renderScript, outputBitmap);
-//
-//        //Intrinsic Gausian blur filter
-//        ScriptIntrinsicBlur theIntrinsic = ScriptIntrinsicBlur.create(renderScript, Element.U8_4(renderScript));
-//        theIntrinsic.setRadius(BLUR_RADIUS);
-//        theIntrinsic.setInput(tmpIn);
-//        theIntrinsic.forEach(tmpOut);
-//        tmpOut.copyTo(outputBitmap);
-//        return outputBitmap;
-//    }
+    private Bitmap getBitmapFromUri(Uri uri) throws IOException {
+        ParcelFileDescriptor parcelFileDescriptor =
+                getContext().getContentResolver().openFileDescriptor(uri, "r");
+        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+        parcelFileDescriptor.close();
+        return image;
+    }
 
 
+    private boolean updateProfile (String username){
+        databaseReference = FirebaseDatabase.getInstance().getReference("UserInfo").child(username);
+        databaseReference.setValue(username);
 
-
+        Toast.makeText(getContext(), "Updated",Toast.LENGTH_LONG).show();
+        return  true;
+    }
 }

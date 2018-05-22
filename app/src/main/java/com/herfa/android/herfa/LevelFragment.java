@@ -151,12 +151,15 @@ public class LevelFragment extends Fragment implements LevelsAdapter.OnAdapterIt
                        // int craft_name=R.string.carpentry_small;
                         //int craft_level=R.string.introduction_small;
 
+                        int craft_name=R.string.carpentry_firebase;
+                        int craft_level=R.string.introduction_firebase;
+
                         //Toast.makeText(getContext(),getString(mParam1),Toast.LENGTH_LONG).show();
                         //chech if craft=current craft (carpentry)
-                        if (snap.getKey().equals(getString(mParam1))){
+                        if (snap.getKey().equals(getString(craft_name))){
                             //get children of (carpentry) which is Introduction
                             for(DataSnapshot snap2:snap.getChildren()){
-                                if(snap2.getKey().equals(getString(mParam2))){
+                                if(snap2.getKey().equals(getString(craft_level))){
                                     // for(DataSnapshot snap3:dataSnapshot.getChildren()){
                                     Introduction info= snap2.getValue(Introduction.class);
                                     Equipements equip=info.getEquipments();
@@ -176,6 +179,7 @@ public class LevelFragment extends Fragment implements LevelsAdapter.OnAdapterIt
                      if(mParam1 == R.string.carpentry &&mParam2 == R.string.basic_tools){
                         int craft_name=R.string.carpentry_small;
                         String craft_level= getString(R.string.Basictools);
+
                        // Toast.makeText(getContext(),getString(mParam1)+getString(mParam2),Toast.LENGTH_LONG).show();
                         if (snap.getKey().equals(getString(mParam1))){
                             //get children of (carpentry) which is Introduction

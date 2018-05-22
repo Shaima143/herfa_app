@@ -52,6 +52,8 @@ import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.icu.util.ULocale.getDisplayName;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
@@ -182,10 +184,9 @@ public class SignUpActivity extends AppCompatActivity {
 
                                         String key = newUser.push().getKey();
 
+
                                         SignUpInfo signUpInfo = new SignUpInfo();
                                         signUpInfo.setUsername(signUpUsername.getText().toString());
-                                        //signUpInfo.setEmail(signUpEmail.getText().toString());
-                                        //signUpInfo.setPassword(signUpPwd.getText().toString());
                                         signUpInfo.setUserImageURL(taskSnapshot.getDownloadUrl().toString());
 
                                         if (isCraftsmanUser.isChecked()) {
@@ -448,17 +449,6 @@ public class SignUpActivity extends AppCompatActivity {
                     startActivityForResult(i, IMAGE_CAPTURE_REQUEST_CODE);
                 }
                 else if (items[item].equals(getString(R.string.select_from_gallery))) {
-//                    Intent i = new Intent();
-//                    i.setType("image/*");
-//                    i.setAction(Intent.ACTION_GET_CONTENT);
-//                    startActivityForResult(Intent.createChooser(i, "Select Picture"), PICK_IMAGE_REQUEST);
-
-//                    Intent intent = new Intent();
-//                    intent.setType("image/*");
-//                    intent.setAction(Intent.ACTION_GET_CONTENT);
-//                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-
-
                     Intent i = new Intent(
                             Intent.ACTION_PICK,
                             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

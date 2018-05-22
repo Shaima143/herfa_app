@@ -32,12 +32,12 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profile_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginBottom="@dimen/textSize17dp"
-                    android:src="@drawable/camera"
+                    android:src="@drawable/nobody"
                     app:civ_border_color="@color/darkBrown"
                     app:civ_border_width="3dp"
                     android:layout_marginTop="@dimen/textSize15dp"
