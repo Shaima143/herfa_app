@@ -19,4 +19,7 @@
     <color name="white">#ffffff</color>
     <color name="greyUncheckedIcons">#afb6b6</color>
     <color name="customdialogBack">#d6e4d9c6</color>
+    <color name="profile">#aeffffff</color>
+    <color name="avgBrown">#b64f1c</color>
 </resources>
+

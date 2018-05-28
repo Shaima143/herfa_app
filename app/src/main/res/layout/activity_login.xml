@@ -115,12 +115,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp">
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
 
                 <Button
                     android:id="@+id/buttonLogin"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/sign_in"
                     android:textColor="@color/darkBrown"
@@ -128,13 +128,16 @@
                     android:layout_marginBottom="10dp"
                     android:textSize="@dimen/textSize17dp"
                     style="?android:attr/borderlessButtonStyle"
-                    android:background="@drawable/loginbuttonshape"
+                    android:background="@drawable/login_buttons_shape"
+                    android:layout_gravity="center"
+                    android:paddingRight="@dimen/margin30dp"
+                    android:paddingLeft="@dimen/margin30dp"
                     />
 
 
                 <Button
                     android:id="@+id/buttonNewUser"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/register_now"
                     android:textColor="@color/darkBrown"
@@ -142,7 +145,10 @@
                     android:layout_marginBottom="10dp"
                     android:textSize="@dimen/textSize17dp"
                     style="?android:attr/borderlessButtonStyle"
-                    android:background="@drawable/loginbuttonshape"/>
+                    android:background="@drawable/login_buttons_shape"
+                    android:layout_gravity="center"
+                    android:paddingRight="@dimen/margin30dp"
+                    android:paddingLeft="@dimen/margin30dp"/>
                 <!--android:layout_marginLeft="80dp"-->
                 <!--android:layout_marginRight="80dp"/>-->
 
@@ -157,7 +163,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/or"
                 android:layout_marginBottom="12dp"
-                android:textColor="@color/lightBrown"
+                android:textColor="@color/avgBrown"
                 android:textSize="@dimen/textSize15dp"/>
 
 

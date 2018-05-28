@@ -86,7 +86,7 @@
                 android:layout_gravity="center"
                 android:src="@drawable/nobody"
                 app:civ_border_color="@color/darkBrown"
-                app:civ_border_width="3dp" />
+                app:civ_border_width="1dp" />
 
             <ImageView
                 android:id="@+id/iconAdd"
@@ -104,18 +104,20 @@
 
         <EditText
             android:id="@+id/editTextNameProfile"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginLeft="@dimen/margin10dp"
-            android:layout_marginRight="@dimen/margin10dp"
             android:gravity="center"
             android:hint="@string/name"
             android:inputType="textPersonName"
             android:padding="5dp"
-            android:paddingLeft="0dp"
             android:textColor="@color/darkBrown"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingLeft="@dimen/padding50dp"
+            android:paddingRight="@dimen/padding50dp"
+            android:layout_marginLeft="@dimen/margin10dp"
+            android:layout_marginRight="@dimen/margin10dp"/>
         <!--android:background="@drawable/edittextshape"-->
 
 
@@ -154,7 +156,7 @@
 
         <EditText
             android:id="@+id/editTextUserEmail"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="@dimen/margin10dp"
@@ -165,7 +167,8 @@
             android:padding="5dp"
             android:paddingLeft="0dp"
             android:textColor="@color/darkBrown"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
 
 
         <!--<TextView-->
@@ -220,26 +223,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:gravity="bottom|center"
-        android:layout_weight="3">
+        android:gravity="center"
+        android:layout_weight="3"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/margin70dp">
 
         <Button
             android:id="@+id/buttonUpdateProfile"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin40dp"
-            android:paddingLeft="@dimen/margin10dp"
-            android:paddingRight="@dimen/margin10dp"
+            android:paddingLeft="@dimen/margin20dp"
+            android:paddingRight="@dimen/margin20dp"
             android:text="@string/update_changes"
             android:textAllCaps="false"
             android:textColor="@color/lightBrown"
             android:textSize="@dimen/textSize20dp"
             android:layout_gravity="left"
-            android:textStyle="bold"
             android:fontFamily="sans-serif"
-            android:layout_marginTop="@dimen/margin20dp"
-            android:background="@drawable/ripple_effect"/>
+            android:gravity="center"
+            android:layout_marginRight="@dimen/padding10dp"
+            android:background="@drawable/profile_edit_text"/>
 
 
 
@@ -248,18 +252,15 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin40dp"
-            android:paddingLeft="@dimen/margin10dp"
-            android:paddingRight="@dimen/margin10dp"
+            android:paddingLeft="@dimen/margin20dp"
+            android:paddingRight="@dimen/margin20dp"
             android:text="@string/delete_account"
             android:textAllCaps="false"
             android:textColor="@color/lightBrown"
-            android:textSize="@dimen/textSize20dp"
+            android:textSize="20dp"
             android:layout_gravity="left"
-            android:textStyle="bold"
             android:fontFamily="sans-serif"
-            android:layout_marginTop="@dimen/margin20dp"
-            android:background="@drawable/ripple_effect"/>
+            android:background="@drawable/profile_edit_text"/>
 
 
 

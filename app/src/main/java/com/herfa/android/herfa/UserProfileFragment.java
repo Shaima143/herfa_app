@@ -1,5 +1,6 @@
 package com.herfa.android.herfa;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.DownloadManager;
 import android.content.ContentResolver;
@@ -11,6 +12,7 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 
@@ -113,7 +115,7 @@ public class UserProfileFragment extends Fragment {
     private TextView userProfileEmail, logout, status;
     private Button updateProfile, deleteProfile, changePass, changeEmail;
     private ProgressBar progressBar;
-    private ImageView settingsBtn, back, edit, iconChangeProfileImage;;
+    private ImageView settingsBtn, back, edit, iconChangeProfileImage, updateImageAddIcon;
     private TextView title;
 
     Fragment fragment;
@@ -186,11 +188,8 @@ public class UserProfileFragment extends Fragment {
 
         settingsBtn = view.findViewById(R.id.settingsButton);
 
-        //usernameEditText.setBackgroundColor(Color.TRANSPARENT);
 
         getActivity().setTitle(getString(R.string.profile));
-
-
 
         UserprofileImage = view.findViewById(R.id.user_profile_image);
         usernameEditText = view.findViewById(R.id.editTextNameProfile);
@@ -205,6 +204,10 @@ public class UserProfileFragment extends Fragment {
         status = view.findViewById(R.id.tvProfileStatus);
         edit = view.findViewById(R.id.editIcon);
         iconChangeProfileImage = view.findViewById(R.id.iconAdd);
+        updateImageAddIcon=view.findViewById(R.id.iconAdd);
+
+        usernameEditText.setBackground(null);
+        emailEditText.setBackground(null);
 
         UserprofileImage.setClickable(false);
 
@@ -227,6 +230,7 @@ public class UserProfileFragment extends Fragment {
 
 
         edit.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v) {
                 if(count==0){
@@ -236,8 +240,13 @@ public class UserProfileFragment extends Fragment {
                     emailEditText.setEnabled(false);
                     updateProfile.setVisibility(View.INVISIBLE);
                     deleteProfile.setVisibility(View.INVISIBLE);
-                    usernameEditText.setBackground(null);
+
                     iconChangeProfileImage.setVisibility(View.INVISIBLE);
+
+
+
+                    emailEditText.setBackground(null);
+                    usernameEditText.setBackground(null);
 
                     UserprofileImage.setClickable(false);
                    // UserprofileImage.setImageAlpha((int) 1.0);
@@ -255,7 +264,14 @@ public class UserProfileFragment extends Fragment {
                     updateProfile.setVisibility(View.VISIBLE);
                     deleteProfile.setVisibility(View.VISIBLE);
                     iconChangeProfileImage.setVisibility(View.VISIBLE);
-                    usernameEditText.setBackground(Drawable.createFromPath(String.valueOf(R.drawable.edittextshape)));
+
+//                    usernameEditText.setBackground(view.getBackground());
+//                    emailEditText.setBackground(view.getBackground());
+//                    usernameEditText.setBackground(null);
+//                    emailEditText.setBackground(null);
+
+                    emailEditText.setBackgroundColor(Color.WHITE);
+                    usernameEditText.setBackgroundColor(Color.WHITE);
 
                     UserprofileImage.setClickable(true);
                    // UserprofileImage.setImageAlpha((int) 0.5);
@@ -362,8 +378,10 @@ public class UserProfileFragment extends Fragment {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 SignUpInfo info= dataSnapshot.getValue(SignUpInfo.class);
                                 //Toast.makeText(getContext(),info.getUserImageURL(),Toast.LENGTH_LONG).show();
-                                Picasso.with(getContext()).load(info.getUserImageURL()).resize(400,400).into(UserprofileImage);
-                                usernameEditText.setText(info.getUsername());
+
+                                //Picasso.with(getContext()).load(info.getUserImageURL()).resize(400,400).into(UserprofileImage);
+
+                                //usernameEditText.setText(info.getUsername());
                                 //emailEditText.setText(info.getEmail());
                                 //userProfileEmail.setText(info.getEmail());
                             }
@@ -417,54 +435,92 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                String uname = usernameEditText.getText().toString();
-                updateProfile(uname);
+//                String uname = usernameEditText.getText().toString();
+//                updateProfile(uname);
 
 //                v.startAnimation(buttonClick);
-//                if(usernameEditText.getText().toString().length()==0){
-//                    usernameEditText.setError("Please enter a new username");
-//                    return;
-//                }
-//
-//                showDialog();
+                if(usernameEditText.getText().toString().length()==0){
+                    usernameEditText.setError("Please enter a new username");
+                    return;
+                }
 
-//                final DatabaseReference databaseReference = FirebaseDatabase.getInstance()
-//                        .getReference("UserInfo").child("username");
-//
-//                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(DataSnapshot dataSnapshot) {
-//                        String newUsername = usernameEditText.getText().toString();
-//                        databaseReference.setValue(newUsername);
-//                        Toast.makeText(getContext(), "updated", Toast.LENGTH_LONG).show();
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(DatabaseError databaseError) {
-//
-//                    }
-//                });
+//                ByteArrayOutputStream baos = new ByteArrayOutputStream();  //convert photo
+//                profile_photo.compress(Bitmap.CompressFormat.PNG, 20, baos);
+//                byte[] data1 = baos.toByteArray();
 
 
+                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(usernameEditText.getText().toString()).build();
+                        //.setPhotoUri(Uri.parse(userProfileImage.toString())).build();
 
 
+                //setUserImageURL(taskSnapshot.getDownloadUrl().toString
 
-//                UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(
-//                        usernameEditText.getText().toString()).build();
-//
-//                firebaseUser.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Void> task) {
-//                        if (task.isSuccessful()) {
-//                            Log.d(TAG, "User profile updated.");
-//                            Toast.makeText(getContext(), "updated", Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                });
-//
+                firebaseUser.updateProfile(request).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "User profile updated.");
+                            Toast.makeText(getContext(), "User changes updated", Toast.LENGTH_LONG).show();
+
+
+                            edit.setColorFilter(ContextCompat.getColor(getContext(),
+                                    R.color.grey));
+                            usernameEditText.setEnabled(false);
+                            emailEditText.setEnabled(false);
+                            deleteProfile.setVisibility(view.INVISIBLE);
+                            updateProfile.setVisibility(View.INVISIBLE);
+                            iconChangeProfileImage.setVisibility(view.INVISIBLE);
+                            UserprofileImage.setClickable(false);
+
+                        }
+                    }
+                });
+
            }
         });
+
+
+        firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        String uname = firebaseUser.getDisplayName();
+        //Toast.makeText(getContext(), ""+uname,Toast.LENGTH_LONG).show();
+        usernameEditText.setText(uname);
+        Picasso.with(getContext()).load(firebaseUser.getPhotoUrl()).resize(400,400).into(UserprofileImage);
+
+
+
+
+//        databaseReference = firebaseDatabase.getReference("UserInfo");
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+//                    if (snap.getKey().equals(user.getUid())) {
+//                        databaseReference.child(snap.getKey()).addValueEventListener(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(DataSnapshot dataSnapshot) {
+//                                SignUpInfo info = dataSnapshot.getValue(SignUpInfo.class);
+//                                String uname = info.getUsername();
+//
+//                                Toast.makeText(getContext(),   " hi " + uname, Toast.LENGTH_SHORT).show();
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(DatabaseError databaseError) {
+//
+//                            }
+//                        });
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+
+
 
 
 
@@ -566,13 +622,19 @@ public class UserProfileFragment extends Fragment {
 });
 
 
+  updateImageAddIcon.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+          selectImage();
+      }
+  });
 
-     UserprofileImage.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View v) {
-             selectImage();
-         }
-     });
+//     UserprofileImage.setOnClickListener(new View.OnClickListener() {
+//         @Override
+//         public void onClick(View v) {
+//             selectImage();
+//         }
+//     });
 
 
 
@@ -828,11 +890,5 @@ public class UserProfileFragment extends Fragment {
     }
 
 
-    private boolean updateProfile (String username){
-        databaseReference = FirebaseDatabase.getInstance().getReference("UserInfo").child(username);
-        databaseReference.setValue(username);
 
-        Toast.makeText(getContext(), "Updated",Toast.LENGTH_LONG).show();
-        return  true;
-    }
 }

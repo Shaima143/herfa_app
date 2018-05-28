@@ -71,6 +71,8 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
     //FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
 
 
     // TODO: Rename and change types of parameters
@@ -211,7 +213,7 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
                                SignUpInfo info= dataSnapshot.getValue(SignUpInfo.class);
                                //Toast.makeText(getContext(),info.getUserImageURL(),Toast.LENGTH_LONG).show();
                                 Picasso.with(getContext()).load(info.getUserImageURL()).resize(430,430).into(profileImage);
-                                userName.setText(info.getUsername());
+                               // userName.setText(info.getUsername());
                                 progress.setVisibility(View.GONE);
                             }
 
@@ -251,9 +253,18 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
         }
 
 
+        firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+        String uname = firebaseUser.getDisplayName();
+        //Toast.makeText(getContext(), ""+uname,Toast.LENGTH_LONG).show();
+        userName.setText(uname);
+
+
+
         return view;
 
     }
+
+
 
 
     public void createlist() {
@@ -416,5 +427,9 @@ public class LevelsFragment extends Fragment implements LevelsAdapter.OnAdapterI
 //            return false;
 //        }
 //    };
+
+
+
+
 
 }

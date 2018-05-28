@@ -86,13 +86,11 @@
             android:textAllCaps="false"
             android:layout_marginBottom="40dp"
             android:textSize="@dimen/textSize20dp"
-            android:layout_marginLeft="@dimen/margin60dp"
-            android:layout_marginRight="@dimen/margin60dp"
             style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/edittextshape"
+            android:background="@drawable/price_shape"
             android:layout_gravity="center"
-            android:paddingLeft="@dimen/padding50dp"
-            android:paddingRight="@dimen/padding50dp"/>
+            android:paddingLeft="@dimen/margin20dp"
+            android:paddingRight="@dimen/margin20dp"/>
 
     </LinearLayout>
 </ScrollView>

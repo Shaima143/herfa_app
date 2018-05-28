@@ -40,7 +40,6 @@ import jp.wasabeef.blurry.Blurry;
 
 public class LoginActivity extends AppCompatActivity implements TextWatcher,CompoundButton.OnCheckedChangeListener {
 
-    private FirebaseAuth firebaseAuth;
     private ProgressDialog pd;
 
     EditText email, pwd;
@@ -48,6 +47,9 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,Comp
     CheckBox rememberMeCheckbox;
 
     BlurImageView blurImageView;
+
+    FirebaseUser firebaseUser;
+    FirebaseAuth firebaseAuth;
 
 
     SharedPreferences sharedPreferences;
@@ -169,7 +171,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher,Comp
                                                     SignUpInfo info = dataSnapshot.getValue(SignUpInfo.class);
                                                     String uname = info.getUsername();
 
-                                                    Toast.makeText(LoginActivity.this, getString(R.string.Welcome_back) + " " + uname, Toast.LENGTH_SHORT).show();
+                                                    firebaseUser = firebaseAuth.getInstance().getCurrentUser();
+                                                    String username = firebaseUser.getDisplayName();
+                                                   // Toast.makeText(LoginActivity.this, ""+uname,Toast.LENGTH_LONG).show();
+
+
+                                                    Toast.makeText(LoginActivity.this, getString(R.string.Welcome_back) + ", " + username, Toast.LENGTH_SHORT).show();
                                                 }
 
                                                 @Override
